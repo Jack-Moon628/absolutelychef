@@ -1,0 +1,41 @@
+Please follow these instructions to deploy this system to live server
+---------------------------------------------------------------------
+
+1. Please change the required parameters in .env.prod file like APP_ENV (local, development), API_URL, database details (also need to change in docker-compose.yml both same), email details, square app details (default is in sandbox mode)
+
+2. Then proceed to following commands 
+
+2.1. Change the required parameters in docker-compose.yml like ports (defaults ports are web - 8990:80, database - 8991:3306)
+
+2.2. Upload in root of the server, unzip and goto root of this application (unzip and cd chefmaster)
+
+2.3. Run command (Note*: docker should be already installed and running)
+
+    - docker-compose up -d --build database && docker-compose up -d --build app && docker-compose up -d --build web
+
+2.4. Run
+
+    - docker exex -it chefmaster bash
+
+2.5. Run
+    - php artisan key:generate
+    - php artisan migrate
+    - php artisan db:seed
+
+3. By detault, after running db:seed command admin is generated with
+    - email : admin@demo.com
+    - password : 123456
+
+4. Now, this application is available at port 8990 (by default) unless you have changed in docker-compose.yml
+
+5. You can access at yourdomain.com:8990
+
+6. Change port to 80:80 to make it available eg yourdomain.com (docker-compose.yml)
+
+
+If you need any assistant please message me in freelancer or email me at safifalak@gmail.com
+------------------
+Thanks and Regards
+------------------
+mysql -h 127.0.0.1 -P 8991 -u root -p
+ssh safi@206.189.24.27 SafiPass@1234

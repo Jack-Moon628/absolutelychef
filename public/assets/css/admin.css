@@ -1,0 +1,149 @@
+@import url('../line-awesome/css/line-awesome.min.css');
+body{
+    overflow-x: hidden;
+}
+.navbar-laravel{
+    box-shadow: none;
+    border-bottom: 1px solid rgba(0,0,0,.125);
+}
+.navbar-brand{
+    padding: 0;
+}
+.navbar-brand img{
+    max-height: 75px;
+    width: auto;
+}
+.main-page {
+    min-height: 100%;
+}
+
+.sidebar .sidebar-menu li {
+    position: relative;
+    display: block;
+    padding: 0rem 1rem 0rem 1.9rem;
+    margin-bottom: -1px;
+    background-color: #fff;
+    border: none;
+    margin-bottom: 10px;
+}
+.sidebar .sidebar-menu li span.arrow {
+    position: absolute;
+    right: 20px;
+}
+.sidebar .sidebar-menu li .dropdown-menu {
+    position: relative;
+    border: none;
+    width: 100%;
+    margin: 0;
+    padding: 0 0 0 20px;
+}
+.sidebar .sidebar-menu li .dropdown-menu li a{
+    color: #636b6f;
+}
+.sidebar .sidebar-menu li .dropdown-menu li a:hover, .sidebar .sidebar-menu li .dropdown-menu li a.active{
+    color: #3490dc;
+    background-color: transparent;
+}
+.sidebar .sidebar-menu li.active .dropdown-menu {
+    display: block !important;
+}
+.sidebar .sidebar-menu li.active a .arrow i:before, .sidebar .sidebar-menu li a .arrow i.open-icon:before {
+    content: "\f11f" !important;
+}
+.sidebar .sidebar-menu li .dropdown-menu li a .badge{
+    margin-top: 4px;
+}
+.main-page-content{
+    border: 1px solid rgba(0,0,0,.125);
+    background-color: #ffffff;
+}
+
+button.updating-btn i.la {
+    -webkit-animation: fa-spin 2s infinite linear;
+    animation: fa-spin 2s infinite linear;
+}
+button.updating-btn i.la:before{
+    content: "\f311";
+}
+.invalid-feedback{
+    display: block !important;
+}
+.field-required{
+    color: #ff0000;
+}
+.transparent-navbar {
+    padding: 20px 0;
+    z-index: 9;
+    background-color: #333;
+}
+
+.main-page{
+    min-height: auto;
+}
+/* bootstrap */
+.btn-primary{
+    background-color: #185da9;
+    border-color: #0f5e9e;
+}
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 5px;
+}
+ 
+::-webkit-scrollbar-track {
+    background-color: #ebebeb;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: #9a9a9a; 
+}
+.sidebar{
+    background: url(../images/sidebar-1.jpg) fixed;
+    height: 100%;
+}
+.sidebar:before{
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: #1f283e;
+    opacity: 0.7;  
+}
+
+.sidebar .list-group-item-action,.sidebar .sidebar-menu li .dropdown-menu li a{
+    color: #e2dfdf;
+    display: block;
+    padding: 12px;
+}
+.sidebar .dropdown-menu,.sidebar .sidebar-menu li{
+        background-color: #d2691e00;
+}
+.sidebar-menu .active a:not(.sidebar-link){
+    background: linear-gradient(60deg,#7b1fa2,#913f9e);
+    box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(156,39,176,.4);
+    color: #fff;
+    border-radius: 5px;
+}
+ 
+.sidebar .list-group-item-action:hover,.sidebar .list-group-item-action:focus,.sidebar .sidebar-menu li .dropdown-menu li a:hover,.sidebar .sidebar-menu .active .dropdown-menu .child-active{
+    color: #f6fbff;
+    background-color: #eaedf11f;
+    border-radius: 3px;
+}
+.sidebar .sidebar-menu li .dropdown-menu li:first-child{
+    margin-top: 10px;
+}
+.sidebar .sidebar-menu li .dropdown-menu li{
+    margin-top: 7px;
+    padding: 0rem 0.8rem 0rem 0.9rem; 
+}
+.tags-panel{
+    background: #e8e8e8;
+    padding: 4px;
+    margin: 0px 2px;
+
+}
