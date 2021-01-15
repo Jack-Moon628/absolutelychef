@@ -58,3 +58,62 @@
 #25 C:\\xampp\\htdocs\\absolutelychef_complete_errors\\absolutelychef_1.14.3\\absolutelychef\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
 #26 {main}
 "} 
+[2021-01-15 04:32:21] local.ERROR: Cannot use Illuminate\Support\ServiceProvider as ServiceProvider because the name is already in use {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot use Illuminate\\Support\\ServiceProvider as ServiceProvider because the name is already in use at C:\\xampp\\htdocs\\absolutelychef_complete_errors\\absolutelychef_1.14.3\\absolutelychef\\app\\Providers\\AppServiceProvider.php:10)
+[stacktrace]
+#0 {main}
+"} 
+[2021-01-15 04:33:16] local.ERROR: Class 'App\Providers\URL' not found {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): Class 'App\\Providers\\URL' not found at C:\\xampp\\htdocs\\absolutelychef_complete_errors\\absolutelychef_1.14.3\\absolutelychef\\app\\Providers\\AppServiceProvider.php:21)
+[stacktrace]
+#0 C:\\xampp\\htdocs\\absolutelychef_complete_errors\\absolutelychef_1.14.3\\absolutelychef\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): App\\Providers\\AppServiceProvider->boot()
+#1 C:\\xampp\\htdocs\\absolutelychef_complete_errors\\absolutelychef_1.14.3\\absolutelychef\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(37): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#2 C:\\xampp\\htdocs\\absolutelychef_complete_errors\\absolutelychef_1.14.3\\absolutelychef\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#3 C:\\xampp\\htdocs\\absolutelychef_complete_errors\\absolutelychef_1.14.3\\absolutelychef\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#4 C:\\xampp\\htdocs\\absolutelychef_complete_errors\\absolutelychef_1.14.3\\absolutelychef\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(590): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#5 C:\\xampp\\htdocs\\absolutelychef_complete_errors\\absolutelychef_1.14.3\\absolutelychef\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(856): Illuminate\\Container\\Container->call(Array)
+#6 C:\\xampp\\htdocs\\absolutelychef_complete_errors\\absolutelychef_1.14.3\\absolutelychef\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(839): Illuminate\\Foundation\\Application->bootProvider(Object(App\\Providers\\AppServiceProvider))
+#7 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(App\\Providers\\AppServiceProvider), 26)
+#8 C:\\xampp\\htdocs\\absolutelychef_complete_errors\\absolutelychef_1.14.3\\absolutelychef\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(840): array_walk(Array, Object(Closure))
+#9 C:\\xampp\\htdocs\\absolutelychef_complete_errors\\absolutelychef_1.14.3\\absolutelychef\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#10 C:\\xampp\\htdocs\\absolutelychef_complete_errors\\absolutelychef_1.14.3\\absolutelychef\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(219): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#11 C:\\xampp\\htdocs\\absolutelychef_complete_errors\\absolutelychef_1.14.3\\absolutelychef\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(320): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#12 C:\\xampp\\htdocs\\absolutelychef_complete_errors\\absolutelychef_1.14.3\\absolutelychef\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(129): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#13 C:\\xampp\\htdocs\\absolutelychef_complete_errors\\absolutelychef_1.14.3\\absolutelychef\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#14 {main}
+"} 
+[2021-01-15 04:33:33] local.ERROR: Class 'App\Providers\URL' not found {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): Class 'App\\Providers\\URL' not found at C:\\xampp\\htdocs\\absolutelychef_complete_errors\\absolutelychef_1.14.3\\absolutelychef\\app\\Providers\\AppServiceProvider.php:21)
+[stacktrace]
+#0 C:\\xampp\\htdocs\\absolutelychef_complete_errors\\absolutelychef_1.14.3\\absolutelychef\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): App\\Providers\\AppServiceProvider->boot()
+#1 C:\\xampp\\htdocs\\absolutelychef_complete_errors\\absolutelychef_1.14.3\\absolutelychef\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(37): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#2 C:\\xampp\\htdocs\\absolutelychef_complete_errors\\absolutelychef_1.14.3\\absolutelychef\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#3 C:\\xampp\\htdocs\\absolutelychef_complete_errors\\absolutelychef_1.14.3\\absolutelychef\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#4 C:\\xampp\\htdocs\\absolutelychef_complete_errors\\absolutelychef_1.14.3\\absolutelychef\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(590): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#5 C:\\xampp\\htdocs\\absolutelychef_complete_errors\\absolutelychef_1.14.3\\absolutelychef\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(856): Illuminate\\Container\\Container->call(Array)
+#6 C:\\xampp\\htdocs\\absolutelychef_complete_errors\\absolutelychef_1.14.3\\absolutelychef\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(839): Illuminate\\Foundation\\Application->bootProvider(Object(App\\Providers\\AppServiceProvider))
+#7 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(App\\Providers\\AppServiceProvider), 26)
+#8 C:\\xampp\\htdocs\\absolutelychef_complete_errors\\absolutelychef_1.14.3\\absolutelychef\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(840): array_walk(Array, Object(Closure))
+#9 C:\\xampp\\htdocs\\absolutelychef_complete_errors\\absolutelychef_1.14.3\\absolutelychef\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#10 C:\\xampp\\htdocs\\absolutelychef_complete_errors\\absolutelychef_1.14.3\\absolutelychef\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(219): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#11 C:\\xampp\\htdocs\\absolutelychef_complete_errors\\absolutelychef_1.14.3\\absolutelychef\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(320): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#12 C:\\xampp\\htdocs\\absolutelychef_complete_errors\\absolutelychef_1.14.3\\absolutelychef\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(129): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#13 C:\\xampp\\htdocs\\absolutelychef_complete_errors\\absolutelychef_1.14.3\\absolutelychef\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#14 {main}
+"} 
+[2021-01-15 04:34:30] local.ERROR: Undefined variable: url {"exception":"[object] (ErrorException(code: 0): Undefined variable: url at C:\\xampp\\htdocs\\absolutelychef_complete_errors\\absolutelychef_1.14.3\\absolutelychef\\app\\Providers\\AppServiceProvider.php:21)
+[stacktrace]
+#0 C:\\xampp\\htdocs\\absolutelychef_complete_errors\\absolutelychef_1.14.3\\absolutelychef\\app\\Providers\\AppServiceProvider.php(21): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(8, 'Undefined varia...', 'C:\\\\xampp\\\\htdocs...', 21, Array)
+#1 C:\\xampp\\htdocs\\absolutelychef_complete_errors\\absolutelychef_1.14.3\\absolutelychef\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): App\\Providers\\AppServiceProvider->boot()
+#2 C:\\xampp\\htdocs\\absolutelychef_complete_errors\\absolutelychef_1.14.3\\absolutelychef\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(37): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#3 C:\\xampp\\htdocs\\absolutelychef_complete_errors\\absolutelychef_1.14.3\\absolutelychef\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#4 C:\\xampp\\htdocs\\absolutelychef_complete_errors\\absolutelychef_1.14.3\\absolutelychef\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#5 C:\\xampp\\htdocs\\absolutelychef_complete_errors\\absolutelychef_1.14.3\\absolutelychef\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(590): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#6 C:\\xampp\\htdocs\\absolutelychef_complete_errors\\absolutelychef_1.14.3\\absolutelychef\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(856): Illuminate\\Container\\Container->call(Array)
+#7 C:\\xampp\\htdocs\\absolutelychef_complete_errors\\absolutelychef_1.14.3\\absolutelychef\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(839): Illuminate\\Foundation\\Application->bootProvider(Object(App\\Providers\\AppServiceProvider))
+#8 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(App\\Providers\\AppServiceProvider), 26)
+#9 C:\\xampp\\htdocs\\absolutelychef_complete_errors\\absolutelychef_1.14.3\\absolutelychef\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(840): array_walk(Array, Object(Closure))
+#10 C:\\xampp\\htdocs\\absolutelychef_complete_errors\\absolutelychef_1.14.3\\absolutelychef\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#11 C:\\xampp\\htdocs\\absolutelychef_complete_errors\\absolutelychef_1.14.3\\absolutelychef\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(219): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#12 C:\\xampp\\htdocs\\absolutelychef_complete_errors\\absolutelychef_1.14.3\\absolutelychef\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(320): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#13 C:\\xampp\\htdocs\\absolutelychef_complete_errors\\absolutelychef_1.14.3\\absolutelychef\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(129): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#14 C:\\xampp\\htdocs\\absolutelychef_complete_errors\\absolutelychef_1.14.3\\absolutelychef\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#15 {main}
+"} 
