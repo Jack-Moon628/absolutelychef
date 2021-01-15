@@ -1,6 +1,4 @@
-@extends('layouts.theme')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 
     <div class="advertise-section bg-white pb-5 pt-5">
@@ -18,11 +16,12 @@
 
                 </div>
                 <div class="col-md-12">
-                    @if(session()->has('error'))
-                        <div class="alert alert-warning" role="alert">
-                                {{ session()->get('message')  }}
-                            </div>                
-                    @endif
+                    <?php if(session()->has('error')): ?>
+                        <div class="alert alert-error" role="alert">
+                            <?php echo e(session()->get('message')); ?>
+
+                        </div>                
+                    <?php endif; ?>
                 </div>
             </div>
 
@@ -33,23 +32,24 @@
                             <div class="row">
                                     <div class="col-xl-6">
                                         <ul class="nav nav-pills nav-stacked flex-column">
-                                            @foreach ($p_waitings as $index => $package)
+                                            <?php $__currentLoopData = $p_waitings; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $package): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                 <li>
-                                                    <a href="#tab_{{$index}}" data-toggle="pill" class="item-option" onclick="CheckOption(this)">
+                                                    <a href="#tab_<?php echo e($index); ?>" data-toggle="pill" class="item-option" onclick="CheckOption(this)">
                                                         <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="enterprise" id="m_singleJob_{{ $index }}" value="{{$index}}" {{ $index == 0 ? 'checked' : '' }}>
-                                                            <label class="form-check-label" for="m_singleJob_{{ $index }}">
-                                                                {!! $package->label !!}
+                                                        <input class="form-check-input" type="radio" name="enterprise" id="m_singleJob_<?php echo e($index); ?>" value="<?php echo e($index); ?>" <?php echo e($index == 0 ? 'checked' : ''); ?>>
+                                                            <label class="form-check-label" for="m_singleJob_<?php echo e($index); ?>">
+                                                                <?php echo $package->label; ?>
+
                                                             </label>
                                                         </div>
                                                     </a>
                                                 </li>
-                                            @endforeach
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                             <li>
                                                 <a href="#" data-toggle="pill" class="item-option" >
                                                     <div class="form-check">
-                                                        <label class="form-check-label" for="m_singleJob_{{ $index }}">
-                                                            <a href="{{ route('contact_us') }}" class="">Request info about packages with CV search</a>
+                                                        <label class="form-check-label" for="m_singleJob_<?php echo e($index); ?>">
+                                                            <a href="<?php echo e(route('contact_us')); ?>" class="">Request info about packages with CV search</a>
                                                         </label>
                                                     </div>
                                                 </a>
@@ -58,10 +58,11 @@
                                     </div>
                                     <div class="col-xl-6">
                                         <div class="tab-content">
-                                            @foreach ($p_waitings as $index => $package)
-                                                    <div class="tab-pane {{ $index == 0 ? 'active' : '' }}" id="tab_{{$index}}">
+                                            <?php $__currentLoopData = $p_waitings; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $package): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                    <div class="tab-pane <?php echo e($index == 0 ? 'active' : ''); ?>" id="tab_<?php echo e($index); ?>">
                                                         <h3>
-                                                            {!! $package->name .',' !!} {!! get_amount($package->price ) !!} {{ $index == 0 ? 'each' : '' }}
+                                                            <?php echo $package->name .','; ?> <?php echo get_amount($package->price ); ?> <?php echo e($index == 0 ? 'each' : ''); ?>
+
                                                         </h3>
                                                         <ul>
                                                             <li>In a few short steps, you can create your job ad online. </li>
@@ -69,9 +70,9 @@
                                                             <li>Job ads live and editable for 30 days</li>
                                                         </ul>
                                                        
-                                                        <a href="{{ route('addToCart', ['id' => $package->id]) }}" class="btn btn-lg btn-primary">Add To Cart</a>
+                                                        <a href="<?php echo e(route('addToCart', ['id' => $package->id])); ?>" class="btn btn-lg btn-primary">Add To Cart</a>
                                                     </div>
-                                            @endforeach
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         </div>
                                     </div>   
                             </div>
@@ -92,23 +93,24 @@
                             <div class="row">
                                 <div class="col-xl-6">
                                     <ul class="nav nav-pills nav-stacked flex-column">
-                                        @foreach ($p_profational as $index => $package)
+                                        <?php $__currentLoopData = $p_profational; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $package): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                 <li>
-                                                    <a href="#tab_b_{{$index}}" data-toggle="pill" class="item-option" onclick="CheckOption(this)">
+                                                    <a href="#tab_b_<?php echo e($index); ?>" data-toggle="pill" class="item-option" onclick="CheckOption(this)">
                                                         <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="managment" id="m_singleJob_{{ $index }}" value="{{$index}}" {{ $index == 0 ? 'checked' : '' }}>
-                                                            <label class="form-check-label" for="m_singleJob_{{ $index }}">
-                                                                {!! $package->label !!}
+                                                        <input class="form-check-input" type="radio" name="managment" id="m_singleJob_<?php echo e($index); ?>" value="<?php echo e($index); ?>" <?php echo e($index == 0 ? 'checked' : ''); ?>>
+                                                            <label class="form-check-label" for="m_singleJob_<?php echo e($index); ?>">
+                                                                <?php echo $package->label; ?>
+
                                                             </label>
                                                         </div>
                                                     </a>
                                                 </li>
-                                            @endforeach
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                             <li>
                                                 <a href="#" data-toggle="pill" class="item-option" >
                                                     <div class="form-check">
-                                                        <label class="form-check-label" for="m_singleJob_{{ $index }}">
-                                                            <a href="{{ route('contact_us') }}" class="">Request info about packages with CV search</a>
+                                                        <label class="form-check-label" for="m_singleJob_<?php echo e($index); ?>">
+                                                            <a href="<?php echo e(route('contact_us')); ?>" class="">Request info about packages with CV search</a>
                                                         </label>
                                                     </div>
                                                 </a>
@@ -117,11 +119,11 @@
                                 </div>
                                 <div class="col-xl-6">
                                     <div class="tab-content">
-                                        @foreach ($p_profational as $index => $package) 
+                                        <?php $__currentLoopData = $p_profational; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $package): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?> 
                                         
-                                                <div class="tab-pane  {{ $index == 0 ? 'active' : '' }}" id="tab_b_{{$index}}">
+                                                <div class="tab-pane  <?php echo e($index == 0 ? 'active' : ''); ?>" id="tab_b_<?php echo e($index); ?>">
                                                     <h3>
-                                                        {!! $package->name .',' !!} {!! get_amount($package->price ) !!} {{ $index == 0 ? 'each' : '' }}                                                    </h3>
+                                                        <?php echo $package->name .','; ?> <?php echo get_amount($package->price ); ?> <?php echo e($index == 0 ? 'each' : ''); ?>                                                    </h3>
                                                     <ul>
                                                         <li>In a few short steps, you can create your job ad online. </li>
                                                         <li>The best value for all types of recruitment search. That is our guarantee to you.</li>
@@ -130,9 +132,9 @@
                                                       
                                                     
 
-                                                    <a href="{{ route('addToCart', ['id' => $package->id]) }}" class="btn btn-lg btn-primary">Add To Cart</a>
+                                                    <a href="<?php echo e(route('addToCart', ['id' => $package->id])); ?>" class="btn btn-lg btn-primary">Add To Cart</a>
                                                 </div>
-                                        @endforeach
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                                     </div>
                                 </div>
@@ -148,7 +150,7 @@
     </div>
 
 
-@endsection
+<?php $__env->stopSection(); ?>
 <script>
 //     $(function() {
 // 	var $a = $(".tabs li");
@@ -164,3 +166,4 @@ function CheckOption(item){
 };
 
 </script>
+<?php echo $__env->make('layouts.theme', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\absolutelychef_complete_errors\absolutelychef_1.14.3\absolutelychef\resources\views/advertise.blade.php ENDPATH**/ ?>

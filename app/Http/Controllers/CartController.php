@@ -148,26 +148,18 @@ class CartController extends Controller
         // optional
         $note = 'Advertise payment'; //note about this charge
 
-        //optional
-        //$reference_id = $cartItem->id; //some kind of reference id to an object or resource
-        
-        $options = [
-            'amount' => \Cart::getTotal() * 100 ,
-            'card_nonce' => $request->nonce,
-            'location_id' => $request->location_id,
-            'currency' => $currency,
-            // 'note' => $note,
-            // 'reference_id' => $reference_id,
-            // "idempotency_key" => "4935a656-a929-4792-b97c-8848be85c27c",
-        ];
         try{
-            $square = Square::charge($options); // Simple charge
+            $square = Square::charge([
+                'amount' => \Cart::getTotal() * 100,
+                'currency' => $currency,
+                'source_id' => $request->nonce,
+                'location_id' => env('SQUARE_LOCATION'),
+            ]);
         }catch(\Exception  $e){
-            // return response($e) ;
-            
-            return redirect()->back()->with('error' ,$e->getMessage() );
+            //return redirect()->back()->with('error' ,$e->getMessage() );
+            return redirect(route('advertise'))->with('error' , "Failed to add Package." );
         }
-            
+        error_log('ths is front of log squaare');
         error_log($square);
         $square->status == "PAID" ?  $payment_status =  OrderPaymentStatusEnum::SUCCESS   : $payment_status =  OrderPaymentStatusEnum::FAILED;
         $promotion = str_random(7);
@@ -189,7 +181,8 @@ class CartController extends Controller
             'jobs'    =>  $cartItem->attributes->job_number,
             'package_name'    => PackageTypeEnums::getKey($cartItem->attributes->type),
         ]);
-            
+        error_log('ths is front of log payment');
+        error_log($payment);
         \Cart::clear();
         return redirect(route('employer_orders'))->with('message','Package was added successfully.');
 
