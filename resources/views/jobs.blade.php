@@ -165,7 +165,7 @@
                         <div class="no-search-results-wrap text-center">
 
                             <p class="p-4">
-                                <img src="{{asset('assets/images/no-search.png')}}" />
+                                <img src="{{secure_asset('assets/images/no-search.png')}}" />
                             </p>
 
                             <h3>Whoops, no Matches</h3>

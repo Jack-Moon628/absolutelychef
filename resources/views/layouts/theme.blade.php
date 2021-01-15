@@ -10,15 +10,15 @@
     <title>{!! !empty($title) ? $title : 'Absolutly Chef' !!}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" {{ ! request()->is('payment*')? 'defer' : ''}}></script>
+    <script src="{{ secure_asset('js/app.js') }}" {{ ! request()->is('payment*')? 'defer' : ''}}></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('assets/css/style.css') }}" rel="stylesheet">
 
     <script type='text/javascript'>
         /* <![CDATA[ */
@@ -32,7 +32,7 @@
     <nav class="navbar navbar-expand-md navbar-light navbar-laravel transparent-navbar p-0">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
-                <img src="{{asset('assets/images/logo-absolutly.png')}}" />
+                <img src="{{secure_asset('assets/images/logo-absolutly.png')}}" />
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                 menu
@@ -114,7 +114,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <img width="180px"  src="{{asset('assets/images/logo-absolutly.png')}}" />
+                    <img width="180px"  src="{{secure_asset('assets/images/logo-absolutly.png')}}" />
 
                 </div>
 
@@ -168,7 +168,7 @@
 
 <!-- Scripts -->
 @yield('page-js')
-<script src="{{ asset('assets/js/main.js') }}" defer></script>
+<script src="{{ secure_asset('assets/js/main.js') }}" defer></script>
 
 </body>
 </html>
