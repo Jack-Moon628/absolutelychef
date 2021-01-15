@@ -64,7 +64,7 @@
 
 
 @section('page-js')
-    <script src="{{ secure_asset('assets/plugins/ckeditor/ckeditor.js') }}" defer></script>
+    <script src="{{ asset('assets/plugins/ckeditor/ckeditor.js') }}" defer></script>
     <script>
         window.addEventListener('DOMContentLoaded', function() {
             CKEDITOR.replace( 'post_content' );

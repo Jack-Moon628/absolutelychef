@@ -2,7 +2,7 @@
 
 
 @section('page-css')
-    <link href="{{secure_asset('assets/plugins/bootstrap-datepicker-1.6.4/css/bootstrap-datepicker3.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/plugins/bootstrap-datepicker-1.6.4/css/bootstrap-datepicker3.css')}}" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -340,7 +340,7 @@
 
 
 @section('page-js')
-    <script src="{{secure_asset('assets/plugins/bootstrap-datepicker-1.6.4/js/bootstrap-datepicker.min.js')}}" defer></script>
+    <script src="{{asset('assets/plugins/bootstrap-datepicker-1.6.4/js/bootstrap-datepicker.min.js')}}" defer></script>
     <script>
         window.onload = function(){
             $('.date_picker').datepicker({

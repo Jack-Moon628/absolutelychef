@@ -206,7 +206,7 @@
                     @if($job->is_premium)
                         <div class="widget-box bg-white p-3 mb-3 shadow rounded">
                             <div class="premium-badge-wrap float-left">
-                                <img src="{{secure_asset('assets/images/premium.png')}}" />
+                                <img src="{{asset('assets/images/premium.png')}}" />
                             </div>
 
                             <h5 class="text-primary">@lang('app.premium_job')</h5>
@@ -554,7 +554,7 @@
 
 
 @section('page-js')
-    <script src="{{ secure_asset('assets/plugins/SocialShare/SocialShare.js') }}" defer></script>
+    <script src="{{ asset('assets/plugins/SocialShare/SocialShare.js') }}" defer></script>
     <script>
         window.addEventListener('DOMContentLoaded', function() {
             (function($) {

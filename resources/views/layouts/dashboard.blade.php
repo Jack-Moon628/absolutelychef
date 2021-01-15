@@ -14,13 +14,13 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
-    <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ secure_asset('assets/css/admin.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/admin.css') }}" rel="stylesheet">
 
     @yield('page-css')
 
     <!-- Scripts -->
-    <script src="{{ secure_asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/app.js') }}" defer></script>
 
     <script type='text/javascript'>
         /* <![CDATA[ */
@@ -47,7 +47,7 @@ $user = Auth::user();
                     <div class="sidebar shadow scrollbar-ripe-malink">
                         <div class=" text-center" >
                             <a class="navbar-brand m-0" href="{{ route('dashboard') }}">
-                                <img  src="{{secure_asset('assets/images/logo-absolutly.png')}}" />
+                                <img  src="{{asset('assets/images/logo-absolutly.png')}}" />
                             </a>
                         </div>
                         <hr class="bg-white mt-0">
@@ -293,7 +293,7 @@ $user = Auth::user();
 
     <!-- Scripts -->
     @yield('page-js')
-    <script src="{{ secure_asset('assets/js/admin.js') }}" defer></script>
+    <script src="{{ asset('assets/js/admin.js') }}" defer></script>
     
 
 </body>

@@ -122,7 +122,7 @@
                 <div class="col-md-4 text-center">
                     <div class="home-register-account-box">
                         <h4>Seek</h4>
-                        <p class="box-icon"><img src="{{secure_asset('assets/images/employee.png')}}" /></p>
+                        <p class="box-icon"><img src="{{asset('assets/images/employee.png')}}" /></p>
                         <p> Seek a Job and see recommendations that suit you</p>                    
                     </div>
                 </div>
@@ -130,7 +130,7 @@
                 <div class="col-md-4 text-center">
                     <div class="home-register-account-box">
                         <h4>Quick</h4>
-                        <p class="box-icon"><img src="{{secure_asset('assets/images/enterprise.png')}}" /></p>
+                        <p class="box-icon"><img src="{{asset('assets/images/enterprise.png')}}" /></p>
                         <p>Apply in a few straightforward steps and access our jobs in double quick time</p>
                     </div>
                 </div>
@@ -138,7 +138,7 @@
                 <div class="col-md-4 text-center">
                     <div class="home-register-account-box">
                         <h4>Recruited</h4>
-                        <p class="box-icon"><img src="{{secure_asset('assets/images/recruited.jpg')}}" /></p>
+                        <p class="box-icon"><img src="{{asset('assets/images/recruited.jpg')}}" /></p>
                         <p> Seek but also be recruited, put your CV on view for businesses</p>
                     </div>
                 </div>
@@ -176,7 +176,7 @@
 
                     <div class="call-to-action-post-job justify-content-center">
                         <div class="job-post-icon my-auto">
-                            <img src="{{secure_asset('assets/images/job.png')}}" />
+                            <img src="{{asset('assets/images/job.png')}}" />
                         </div>
                         <div class="job-post-details mr-3 ml-3 p-3 my-auto">
                             <h1>Post your job</h1>
