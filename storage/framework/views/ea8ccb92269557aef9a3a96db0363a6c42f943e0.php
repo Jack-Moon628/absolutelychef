@@ -32,7 +32,7 @@
     <nav class="navbar navbar-expand-md navbar-light navbar-laravel transparent-navbar p-0">
         <div class="container">
             <a class="navbar-brand" href="<?php echo e(url('/')); ?>">
-                <img src="<?php echo e(asset('assets/images/logo-absolutly.png')); ?>" />
+                <img src="<?php echo e(secure_asset('assets/images/logo-absolutly.png')); ?>" />
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="<?php echo e(__('Toggle navigation')); ?>">
                 menu
@@ -111,7 +111,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <img width="180px"  src="<?php echo e(asset('assets/images/logo-absolutly.png')); ?>" />
+                    <img width="180px"  src="<?php echo e(secure_asset('assets/images/logo-absolutly.png')); ?>" />
 
                 </div>
 

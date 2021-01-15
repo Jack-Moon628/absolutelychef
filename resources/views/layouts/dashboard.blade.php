@@ -47,7 +47,7 @@ $user = Auth::user();
                     <div class="sidebar shadow scrollbar-ripe-malink">
                         <div class=" text-center" >
                             <a class="navbar-brand m-0" href="{{ route('dashboard') }}">
-                                <img  src="{{asset('assets/images/logo-absolutly.png')}}" />
+                                <img  src="{{secure_asset('assets/images/logo-absolutly.png')}}" />
                             </a>
                         </div>
                         <hr class="bg-white mt-0">
