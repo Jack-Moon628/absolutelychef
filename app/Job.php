@@ -42,10 +42,10 @@ class Job extends Model
         return $query->where('status', '=', 0);
     }
     public function scopeApproved($query){
+        error_log("asdf");
         return $query->where('status', '=', 1);
     }
     public function scopeActive($query){
-        error_log("ssssdddd");
         return $query->where('status', '=', 1)->where('deadline', '>=', date('Y-m-d').' 00:00:00');
     }
     public function scopeBlocked($query){

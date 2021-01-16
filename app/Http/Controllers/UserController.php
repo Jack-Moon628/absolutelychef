@@ -115,10 +115,10 @@ class UserController extends Controller
             'job_type' => json_encode(['type' => '' , 'price' => '']),
             'languages' => json_encode([])
         ]);
-        // Mail::send('mail.membership', $data, function($message) use ($data) {
-        //     $message->from('needchange');
-        //     $message->to($data['email']);
-        // });
+        Mail::send('mail.membership', $data, function($message) use ($data) {
+            $message->from('needchange');
+            $message->to($data['email']);
+        });
         return redirect(route('login'))->with('success', __('app.registration_successful'));
     }
 
@@ -186,10 +186,10 @@ class UserController extends Controller
             'deisred_salary' => json_encode(['type' => '' , 'price' => '']),
             'job_type' => json_encode(['type' => '' , 'price' => ''])        
         ] );
-        // Mail::send('mail.membership', $data, function($message) use ($data) {
-        //     $message->from('needchange');
-        //     $message->to($data['email']);
-        // });
+        Mail::send('mail.membership', $data, function($message) use ($data) {
+            $message->from('needchange');
+            $message->to($data['email']);
+        });
         return redirect(route('login'))->with('success', __('app.registration_successful'));
     }
 
@@ -258,10 +258,10 @@ class UserController extends Controller
             'deisred_salary' => json_encode(['type' => '' , 'price' => '']),
             'job_type' => json_encode(['type' => '' , 'price' => ''])
         ]);
-        // Mail::send('mail.membership', $data, function($message) use ($data) {
-        //     $message->from('needchange');
-        //     $message->to($data['email']);
-        // });
+        Mail::send('mail.membership', $data, function($message) use ($data) {
+            $message->from('needchange');
+            $message->to($data['email']);
+        });
         return redirect(route('login'))->with('success', __('app.registration_successful'));
     }
 

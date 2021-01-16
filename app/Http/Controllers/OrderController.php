@@ -39,7 +39,7 @@ class OrderController extends Controller
     public function discount(Request $request){
         $order = Order::where('user_id', $user->id)
         ->where('package_type', $request->package_type)
-        ->update(['job_qty' => $request->job_qty - 1]);
+        ->update(['job_posted' => $request->job_posted + 1]);
         return $userpackage;
     }
 }

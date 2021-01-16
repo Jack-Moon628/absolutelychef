@@ -7,8 +7,6 @@ use App\Post;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
 
-use Illuminate\Routing\UrlGenerator;
-
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -16,9 +14,9 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot(UrlGenerator $url)
+    public function boot()
     {
-        $url->forceScheme('https');
+        // \URL::forceScheme('https');
 
         try {
             DB::connection()->getPdo();

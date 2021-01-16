@@ -38,7 +38,6 @@ class JobController extends Controller
 
 
         $title = __('app.post_new_job');
-
         $categories = Category::orderBy('category_name', 'asc')->get();
         $countries = Country::all();
         $old_country = false;
@@ -118,6 +117,10 @@ class JobController extends Controller
         }
 
         $job->update(['job_id' => $job->id.$job_id]);
+
+        $order =  Order::where('id', $request->order)->first();
+        $order ->update(['job_posted' => $order->job_posted + 1]);
+
         return redirect(route('posted_jobs'))->with('success', __('app.job_posted_success'));
     }
 
@@ -150,7 +153,6 @@ class JobController extends Controller
     }
 
     public function update(Request $request, $id){
-        echo($request->job_title);
         $rules = [
             'job_title' => ['required', 'string', 'max:190'],
             'position' => ['required', 'string', 'max:190'],
@@ -160,10 +162,16 @@ class JobController extends Controller
         ];
         $this->validate($request, $rules);
         $country = Country::find($request->country);
-        if($country)
+        if($country){
             $country_name = $country->country_name;
-        else
+            $country_id = $country->id;
+        }
+        else{
             $country_name = null;
+            $country_id = null;
+        }
+        error_log('country_name------------------------');
+        error_log($country_name);
         $state_name = null;
         if ($request->state){
             $state = State::find($request->state);
@@ -174,9 +182,8 @@ class JobController extends Controller
         if ( ! $job){
             return back()->with('error', 'app.something_went_wrong')->withInput($request->input());
         }
-        Job::where('id', '=', $id)
+        Job::where('id', '=', $job->id)
         ->update([
-            'job_title'                 => $request->job_title,
             'job_title'                 => $request->job_title,
             'job_slug'                  => $request->job_slug|null,
             'position'                  => $request->position,
@@ -202,8 +209,8 @@ class JobController extends Controller
             'additional_requirements'   => $request->additional_requirements,
             'benefits'                  => $request->benefits,
             'apply_instruction'         => $request->apply_instruction,
-            'country_id'                => $request->country|null,
-            'country_name'              => $country_name|null,
+            'country_id'                => $country_id|null,
+            'country_name'              => $country_name,
             'state_id'                  => $request->state|null,
             'state_name'                => $state_name,
             'city_name'                 => $request->city_name,
@@ -291,7 +298,7 @@ class JobController extends Controller
                 JobApplication::create($application_data);
 
                 session()->forget('job_validation_fails');
-                return redirect()->back()->withInput($request->input())->with('success', trans('app.apply_submitted')) ;
+                return redirect()->back()->withInput($request->input())->with('success', trans('Thank you for submitting your application, it has bene forwarded to the requested employer.')) ;
 
             } catch (\Exception $e){
                 return redirect()->back()->withInput($request->input())->with('error', $e->getMessage()) ;
@@ -457,8 +464,6 @@ class JobController extends Controller
 
 
         $jobs = Job::active();
-        error_log("ss");
-        error_log(json_encode($jobs));
         if ($request->q){
             $jobs = $jobs->where('job_title', 'like', "%{$request->q}%")
                     ->orWhere('skills', 'like', "%{$request->q}%")
@@ -489,7 +494,7 @@ class JobController extends Controller
         if ($request->category){
             $jobs = $jobs->whereCategoryId($request->category);
         }
-        // var_dump($jobs);
+
         $jobs = $jobs->orderBy('id', 'desc')->with('employer')->paginate(20);
 
         return view('jobs', compact('title', 'jobs','categories', 'countries', 'old_country'));

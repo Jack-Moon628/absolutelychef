@@ -318,7 +318,7 @@
                         {!! e_form_error('city_name', $errors) !!}
                     </div>
                 </div>
-
+                <input type="number" style="display:none"  value="{{ $order }}" placeholder="{{ $order }}" name="order">
 
 
                 <div class="form-group row text-center">
@@ -327,6 +327,7 @@
                         <button type="submit" class="btn btn-primary">@lang('app.post_new_job')</button>
                     </div>
                 </div>
+
             </form>
 
         </div>

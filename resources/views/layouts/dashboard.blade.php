@@ -52,6 +52,14 @@ $user = Auth::user();
                         </div>
                         <hr class="bg-white mt-0">
                         <ul class="sidebar-menu list-group">
+                            @if($user->user_type != 'user')
+                            <li class="">
+                                <a href="{{route('advertise')}}" class="list-group-item-action active">
+                                    <span class="sidebar-icon"><i class="la la-user"></i> </span>
+                                    <span class="title">Buy New Jobs</span>
+                                </a>
+                            </li>
+                            @endif
                             @if($user->user_type == 'employer' || $user->user_type == 'agent')
                             <li class="{{request()->is('dashboard/employer/profile*')? 'active' : ''}}">
                                 <a href="{{route('employer_profile')}}" class="list-group-item-action active">

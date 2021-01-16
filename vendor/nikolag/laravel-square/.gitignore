@@ -1,0 +1,23 @@
+# Mac specific files
+**.DS_Store
+
+# Laravel
+vendor
+.env
+
+# Composer
+composer.lock
+
+# General
+*.cache
+.gitconfig
+phpunit.xml
+
+# Project
+laravel-square.wiki
+build
+docker-compose.local.yml
+docker
+
+# IDE
+.idea

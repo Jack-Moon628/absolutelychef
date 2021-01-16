@@ -58,15 +58,9 @@ Route::group(['prefix' => 'cart'], function () {
     Route::post('update/{id}', 'CartController@update')->name('cart.update');
     Route::get('remove/{id}', 'CartController@delete')->name('cart.delete');
     Route::get('pay/{nonce}/{token}', 'CartController@payment')->name('cart.payment');
-    Route::post('pay', 'CartController@postPayment');
+    Route::post('pay', 'CartController@Postpayment');
 });
 
-//userpackage
-Route::group(['prefix' => 'user-package'], function () {
-
-    Route::post('/add', 'UserPackageController@add');
-    Route::post('/discount', 'UserPackageController@discount');
-});
 
 //checkout
 Route::get('checkout/{package_id}', 'PaymentController@checkout')->name('checkout')->middleware('auth');

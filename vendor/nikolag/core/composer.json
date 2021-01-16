@@ -1,0 +1,62 @@
+{
+    "name": "nikolag/core",
+    "description": "Nikolag Core package for Laravel payment integrations that are not part of the Cashier",
+    "keywords": ["payments", "laravel", "payments laravel integration", "finances"],
+    "license": "MIT",
+    "type": "laravel-package",
+    "authors": [{
+        "name": "Nikola Gavric",
+        "email": "nikola.gavric94@gmail.com",
+        "role": "Developer"
+    }],
+    "require": {
+        "php": ">=7.0.0",
+        "illuminate/support": "~5.5|~5.6|~5.7|~5.8|~6.0|~7.0",
+        "illuminate/config": "~5.5|~5.6|~5.7|~5.8|~6.0|~7.0",
+        "illuminate/console": "~5.5|~5.6|~5.7|~5.8|~6.0|~7.0",
+        "illuminate/contracts": "~5.5|~5.6|~5.7|~5.8|~6.0|~7.0",
+        "illuminate/container": "~5.5|~5.6|~5.7|~5.8|~6.0|~7.0",
+        "illuminate/database": "~5.5|~5.6|~5.7|~5.8|~6.0|~7.0",
+        "illuminate/filesystem": "~5.5|~5.6|~5.7|~5.8|~6.0|~7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Nikolag\\Core\\": "src/",
+            "Nikolag\\Core\\Abstracts\\": "src/abstracts",
+            "Nikolag\\Core\\Contracts\\": "src/contracts",
+            "Nikolag\\Core\\Exceptions\\": "src/exceptions",
+            "Nikolag\\Core\\Facades\\": "src/facades",
+            "Nikolag\\Core\\Models\\": "src/models",
+            "Nikolag\\Core\\Providers\\": "src/providers",
+            "Nikolag\\Core\\Traits\\": "src/traits",
+            "Nikolag\\Core\\Utils\\": "src/utils"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Nikolag\\Core\\": "src/",
+            "Nikolag\\Core\\Abstracts\\": "src/abstracts",
+            "Nikolag\\Core\\Contracts\\": "src/contracts",
+            "Nikolag\\Core\\Exceptions\\": "src/exceptions",
+            "Nikolag\\Core\\Facades\\": "src/facades",
+            "Nikolag\\Core\\Models\\": "src/models",
+            "Nikolag\\Core\\Providers\\": "src/providers",
+            "Nikolag\\Core\\Traits\\": "src/traits",
+            "Nikolag\\Core\\Utils\\": "src/utils"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.4.x-dev"
+        },
+        "laravel": {
+            "providers": [
+                "Nikolag\\Core\\Providers\\MigrationServiceProvider",
+                "Nikolag\\Core\\Providers\\CoreServiceProvider"
+            ],
+            "facades": [
+                "Nikolag\\Core\\Facades\\CoreService"
+            ]
+        }
+    }
+}

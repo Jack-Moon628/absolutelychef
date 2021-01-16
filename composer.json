@@ -5,7 +5,7 @@
     "license": "MIT",
     "type": "project",
     "require": {
-        "php": "^7.2.34",
+        "php": "^7.2.3",
         "bensampo/laravel-enum": "^1.38",
         "darryldecode/cart": "^4.1",
         "fideloper/proxy": "^4.0",
@@ -66,9 +66,5 @@
         "optimize-autoloader": true
     },
     "minimum-stability": "dev",
-    "prefer-stable": true,
-    "post-install-cmd": [
-        "php artisan clear-compiled",
-        "chmod -R 777 public/"
-    ]
+    "prefer-stable": true
 }
