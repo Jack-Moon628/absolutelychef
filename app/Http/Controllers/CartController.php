@@ -153,7 +153,7 @@ class CartController extends Controller
                 'amount' => \Cart::getTotal() * 100,
                 'currency' => $currency,
                 'card_nonce' => $request->nonce,
-                'location_id' => env('SQUARE_LOCATION'),
+                'location_id' => 'L8556A5ADYG7A',
             ]);
         }catch(\Exception  $e){
             error_log('error----------------------------------------------------');

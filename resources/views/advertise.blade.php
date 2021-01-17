@@ -20,8 +20,8 @@
                 <div class="col-md-12">
                     @if(session()->has('error'))
                         <div class="alert alert-warning" role="alert">
-                                {{ session()->get('message')  }}
-                            </div>                
+                            "Failed to add Package."
+                        </div>                
                     @endif
                 </div>
             </div>
