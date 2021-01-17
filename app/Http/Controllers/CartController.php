@@ -152,13 +152,19 @@ class CartController extends Controller
             $square = Square::charge([
                 'amount' => \Cart::getTotal() * 100,
                 'currency' => $currency,
-                'card_nonce' => $request->nonce,
+                'source_id' => $request->nonce,
                 'location_id' => 'L8556A5ADYG7A',
+                
+                // 'amount' => $request->total*100,
+                // 'currency' => 'USD',
+                // 'card_nonce' => $request->nonce,
+                // 'location_id' => env('SQUARE_LOCATION'),
             ]);
         }catch(\Exception  $e){
             error_log('error----------------------------------------------------');
             //return redirect()->back()->with('error' ,$e->getMessage() );
-            return redirect(route('advertise'))->with('error' , "Failed to add Package." );
+            var_dump($e);
+            // return redirect(route('advertise'))->with('error' , "Failed to add Package." );
         }
         error_log('ths is front of log squaare');
         error_log($square);
