@@ -114,7 +114,7 @@ class V1TransactionsApi
             $headerParams['Accept'] = $_header_accept;
         }
         $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
-        $headerParams['Square-Version'] = "2019-09-25";
+        $headerParams['Square-Version'] = "2020-05-28";
 
         
         
@@ -171,6 +171,7 @@ class V1TransactionsApi
         }
     }
     /**
+     * @deprecated
      * listBankAccounts
      *
      * ListBankAccounts
@@ -181,6 +182,7 @@ class V1TransactionsApi
      */
     public function listBankAccounts($location_id)
     {
+        trigger_error("\x1B[33mCalling deprecated API: V1TransactionsApi.listBankAccounts\x1B[0m", E_USER_DEPRECATED);
         list($response, $statusCode, $httpHeader) = $this->listBankAccountsWithHttpInfo ($location_id);
         return $response; 
     }
@@ -214,7 +216,7 @@ class V1TransactionsApi
             $headerParams['Accept'] = $_header_accept;
         }
         $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
-        $headerParams['Square-Version'] = "2019-09-25";
+        $headerParams['Square-Version'] = "2020-05-28";
 
         
         
@@ -316,7 +318,7 @@ class V1TransactionsApi
             $headerParams['Accept'] = $_header_accept;
         }
         $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
-        $headerParams['Square-Version'] = "2019-09-25";
+        $headerParams['Square-Version'] = "2020-05-28";
 
         // query params
         if ($order !== null) {
@@ -433,7 +435,7 @@ class V1TransactionsApi
             $headerParams['Accept'] = $_header_accept;
         }
         $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
-        $headerParams['Square-Version'] = "2019-09-25";
+        $headerParams['Square-Version'] = "2020-05-28";
 
         // query params
         if ($order !== null) {
@@ -557,7 +559,7 @@ class V1TransactionsApi
             $headerParams['Accept'] = $_header_accept;
         }
         $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
-        $headerParams['Square-Version'] = "2019-09-25";
+        $headerParams['Square-Version'] = "2020-05-28";
 
         // query params
         if ($order !== null) {
@@ -629,11 +631,11 @@ class V1TransactionsApi
      *
      * ListSettlements
      *
-     * @param string $location_id The ID of the location to list settlements for. If you specify me, this endpoint returns payments aggregated from all of the business&#39;s locations. (required)
-     * @param string $order TThe order in which payments are listed in the response. (optional)
+     * @param string $location_id The ID of the location to list settlements for. If you specify me, this endpoint returns settlements aggregated from all of the business&#39;s locations. (required)
+     * @param string $order The order in which settlements are listed in the response. (optional)
      * @param string $begin_time The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year. (optional)
      * @param string $end_time The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time. (optional)
-     * @param int $limit The maximum number of payments to return in a single response. This value cannot exceed 200. (optional)
+     * @param int $limit The maximum number of settlements to return in a single response. This value cannot exceed 200. (optional)
      * @param string $status Provide this parameter to retrieve only settlements with a particular status (SENT or FAILED). (optional)
      * @param string $batch_token A pagination cursor to retrieve the next set of results for your original query to the endpoint. (optional)
      * @return \SquareConnect\Model\V1Settlement[]
@@ -651,11 +653,11 @@ class V1TransactionsApi
      *
      * ListSettlements
      *
-     * @param string $location_id The ID of the location to list settlements for. If you specify me, this endpoint returns payments aggregated from all of the business&#39;s locations. (required)
-     * @param string $order TThe order in which payments are listed in the response. (optional)
+     * @param string $location_id The ID of the location to list settlements for. If you specify me, this endpoint returns settlements aggregated from all of the business&#39;s locations. (required)
+     * @param string $order The order in which settlements are listed in the response. (optional)
      * @param string $begin_time The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year. (optional)
      * @param string $end_time The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time. (optional)
-     * @param int $limit The maximum number of payments to return in a single response. This value cannot exceed 200. (optional)
+     * @param int $limit The maximum number of settlements to return in a single response. This value cannot exceed 200. (optional)
      * @param string $status Provide this parameter to retrieve only settlements with a particular status (SENT or FAILED). (optional)
      * @param string $batch_token A pagination cursor to retrieve the next set of results for your original query to the endpoint. (optional)
      * @return Array of \SquareConnect\Model\V1Settlement[], HTTP status code, HTTP response headers (array of strings)
@@ -680,7 +682,7 @@ class V1TransactionsApi
             $headerParams['Accept'] = $_header_accept;
         }
         $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
-        $headerParams['Square-Version'] = "2019-09-25";
+        $headerParams['Square-Version'] = "2020-05-28";
 
         // query params
         if ($order !== null) {
@@ -751,6 +753,7 @@ class V1TransactionsApi
         }
     }
     /**
+     * @deprecated
      * retrieveBankAccount
      *
      * RetrieveBankAccount
@@ -762,6 +765,7 @@ class V1TransactionsApi
      */
     public function retrieveBankAccount($location_id, $bank_account_id)
     {
+        trigger_error("\x1B[33mCalling deprecated API: V1TransactionsApi.retrieveBankAccount\x1B[0m", E_USER_DEPRECATED);
         list($response, $statusCode, $httpHeader) = $this->retrieveBankAccountWithHttpInfo ($location_id, $bank_account_id);
         return $response; 
     }
@@ -800,7 +804,7 @@ class V1TransactionsApi
             $headerParams['Accept'] = $_header_accept;
         }
         $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
-        $headerParams['Square-Version'] = "2019-09-25";
+        $headerParams['Square-Version'] = "2020-05-28";
 
         
         
@@ -909,7 +913,7 @@ class V1TransactionsApi
             $headerParams['Accept'] = $_header_accept;
         }
         $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
-        $headerParams['Square-Version'] = "2019-09-25";
+        $headerParams['Square-Version'] = "2020-05-28";
 
         
         
@@ -1018,7 +1022,7 @@ class V1TransactionsApi
             $headerParams['Accept'] = $_header_accept;
         }
         $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
-        $headerParams['Square-Version'] = "2019-09-25";
+        $headerParams['Square-Version'] = "2020-05-28";
 
         
         
@@ -1127,7 +1131,7 @@ class V1TransactionsApi
             $headerParams['Accept'] = $_header_accept;
         }
         $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
-        $headerParams['Square-Version'] = "2019-09-25";
+        $headerParams['Square-Version'] = "2020-05-28";
 
         
         
@@ -1242,7 +1246,7 @@ class V1TransactionsApi
             $headerParams['Accept'] = $_header_accept;
         }
         $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
-        $headerParams['Square-Version'] = "2019-09-25";
+        $headerParams['Square-Version'] = "2020-05-28";
 
         
         

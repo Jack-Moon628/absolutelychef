@@ -2,6 +2,7 @@
 
 namespace Nikolag\Square\Models;
 
+use DateTimeInterface;
 use Nikolag\Core\Models\Customer as CoreCustomer;
 use Nikolag\Square\Utils\Constants;
 
@@ -50,5 +51,16 @@ class Customer extends CoreCustomer
         $this->fill($data);
 
         return $query->exists() ? $query->first() : $this;
+    }
+
+    /**
+     * Prepare a date for array / JSON serialization.
+     *
+     * @param  \DateTimeInterface  $date
+     * @return string
+     */
+    protected function serializeDate(DateTimeInterface $date)
+    {
+        return $date->format('Y-m-d H:i:s');
     }
 }

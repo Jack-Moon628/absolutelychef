@@ -2,7 +2,7 @@
 
 ### Description
 
-Possible kinds of `CatalogObject`s returned from the Catalog, each containing type-specific properties in the `*_data` field corresponding to the object type.
+Possible types of CatalogObjects returned from the Catalog, each containing type-specific properties in the `*_data` field corresponding to the object type.
 
 ## Properties
 Name | Type
@@ -21,6 +21,8 @@ Name | Type
 **MEASUREMENT_UNIT** | string
 **ITEM_OPTION** | string
 **ITEM_OPTION_VAL** | string
+**CUSTOM_ATTRIBUTE_DEFINITION** | string
+**QUICK_AMOUNTS_SETTINGS** | string
 
 Note: All properties are protected and only accessed via getters and setters.
 

@@ -16,6 +16,7 @@ use \ArrayAccess;
  * @author   Square Inc.
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link     https://squareup.com/developers
+ * Note: This endpoint is in beta.
  */
 class CatalogItemOptionValue implements ArrayAccess
 {
@@ -82,12 +83,12 @@ class CatalogItemOptionValue implements ArrayAccess
       */
     protected $name;
     /**
-      * $description The option value's human-readable description.
+      * $description A human-readable description for the option value.
       * @var string
       */
     protected $description;
     /**
-      * $color The HTML color for this value in the format #FFRRGGBB or #RRGGBB (e.g., \"#ff8d4e85\"). Only displayed if parent Item Option's `show_colors` flag is enabled. value.
+      * $color The HTML-supported hex color for the item option (e.g., \"#ff8d4e85\"). Only displayed if `show_colors` is enabled on the parent `ItemOption`. When left unset, `color` defaults to white (\"#ffffff\") when `show_colors` is enabled on the parent `ItemOption`.
       * @var string
       */
     protected $color;
@@ -97,7 +98,7 @@ class CatalogItemOptionValue implements ArrayAccess
       */
     protected $ordinal;
     /**
-      * $item_variation_count The number of [CatalogItemVariation(#type-catalogitemvariation)s that currently make use of this Item Option value. Present only if `retrieve_counts` was specified on the request used to retrieve the parent Item Option of this value.  Maximum: 100 counts.
+      * $item_variation_count The number of `CatalogItemVariation`s that currently make use of this Item Option value. Present only if `retrieve_counts` was specified on the request used to retrieve the parent Item Option of this value.  Maximum: 100 counts.
       * @var int
       */
     protected $item_variation_count;
@@ -190,7 +191,7 @@ class CatalogItemOptionValue implements ArrayAccess
   
     /**
      * Sets description
-     * @param string $description The option value's human-readable description.
+     * @param string $description A human-readable description for the option value.
      * @return $this
      */
     public function setDescription($description)
@@ -209,7 +210,7 @@ class CatalogItemOptionValue implements ArrayAccess
   
     /**
      * Sets color
-     * @param string $color The HTML color for this value in the format #FFRRGGBB or #RRGGBB (e.g., \"#ff8d4e85\"). Only displayed if parent Item Option's `show_colors` flag is enabled. value.
+     * @param string $color The HTML-supported hex color for the item option (e.g., \"#ff8d4e85\"). Only displayed if `show_colors` is enabled on the parent `ItemOption`. When left unset, `color` defaults to white (\"#ffffff\") when `show_colors` is enabled on the parent `ItemOption`.
      * @return $this
      */
     public function setColor($color)
@@ -247,7 +248,7 @@ class CatalogItemOptionValue implements ArrayAccess
   
     /**
      * Sets item_variation_count
-     * @param int $item_variation_count The number of [CatalogItemVariation(#type-catalogitemvariation)s that currently make use of this Item Option value. Present only if `retrieve_counts` was specified on the request used to retrieve the parent Item Option of this value.  Maximum: 100 counts.
+     * @param int $item_variation_count The number of `CatalogItemVariation`s that currently make use of this Item Option value. Present only if `retrieve_counts` was specified on the request used to retrieve the parent Item Option of this value.  Maximum: 100 counts.
      * @return $this
      */
     public function setItemVariationCount($item_variation_count)

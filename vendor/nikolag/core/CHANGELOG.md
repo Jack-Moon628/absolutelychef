@@ -62,6 +62,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 - Change method name from transactions to payments
 
+## [2.4.0] - 2020-03-22
+### Added
+- Support for Laravel 7
+
+## [2.5.0] - 2020-03-22
+### Added
+- Support for Laravel 8
+
 [Unreleased]: https://github.com/NikolaGavric94/nikolag-core/compare/v2.1.0...HEAD
 [1.1.0]: https://github.com/NikolaGavric94/nikolag-core/compare/v1.0.2...v1.1.0
 [1.0.2]: https://github.com/NikolaGavric94/nikolag-core/compare/v1.0.1...v1.0.2
@@ -71,3 +79,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 [2.1.1]: https://github.com/NikolaGavric94/nikolag-core/compare/v2.1.0...v2.1.1
 [2.2.0]: https://github.com/NikolaGavric94/nikolag-core/compare/v2.1.1...v2.2.0
 [2.3.0]: https://github.com/NikolaGavric94/nikolag-core/compare/v2.2.0...v2.3.0
+[2.4.0]: https://github.com/NikolaGavric94/nikolag-core/compare/v2.3.0...v2.4.0
+[2.5.0]: https://github.com/NikolaGavric94/nikolag-core/compare/v2.4.0...v2.5.0

@@ -11,6 +11,7 @@ Name | Type
 **UNAUTHORIZED** | string
 **ACCESS_TOKEN_EXPIRED** | string
 **ACCESS_TOKEN_REVOKED** | string
+**CLIENT_DISABLED** | string
 **FORBIDDEN** | string
 **INSUFFICIENT_SCOPES** | string
 **APPLICATION_DISABLED** | string
@@ -101,8 +102,6 @@ Name | Type
 **BAD_CERTIFICATE** | string
 **INVALID_SQUARE_VERSION_FORMAT** | string
 **API_VERSION_INCOMPATIBLE** | string
-**INVALID_URL** | string
-**HTTPS_ONLY** | string
 **CARD_DECLINED** | string
 **VERIFY_CVV_FAILURE** | string
 **VERIFY_AVS_FAILURE** | string
@@ -118,10 +117,13 @@ Name | Type
 **NOT_ACCEPTABLE** | string
 **REQUEST_TIMEOUT** | string
 **CONFLICT** | string
+**GONE** | string
 **REQUEST_ENTITY_TOO_LARGE** | string
 **UNSUPPORTED_MEDIA_TYPE** | string
+**UNPROCESSABLE_ENTITY** | string
 **RATE_LIMITED** | string
 **NOT_IMPLEMENTED** | string
+**BAD_GATEWAY** | string
 **SERVICE_UNAVAILABLE** | string
 **TEMPORARY_ERROR** | string
 **GATEWAY_TIMEOUT** | string

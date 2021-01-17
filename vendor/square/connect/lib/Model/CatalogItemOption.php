@@ -16,6 +16,7 @@ use \ArrayAccess;
  * @author   Square Inc.
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link     https://squareup.com/developers
+ * Note: This endpoint is in beta.
  */
 class CatalogItemOption implements ArrayAccess
 {
@@ -82,7 +83,7 @@ class CatalogItemOption implements ArrayAccess
       */
     protected $display_name;
     /**
-      * $description The item option's human-readable description. Displays for in the Square Point of Sale app for the seller and in the Online Store or on receipts for the buyer.
+      * $description The item option's human-readable description. Displayed in the Square Point of Sale app for the seller and in the Online Store or on receipts for the buyer.
       * @var string
       */
     protected $description;
@@ -92,7 +93,7 @@ class CatalogItemOption implements ArrayAccess
       */
     protected $show_colors;
     /**
-      * $values A list of `CatalogObject`s containing the `CatalogItemOptionValue`s for this item.
+      * $values A list of CatalogObjects containing the `CatalogItemOptionValue`s for this item.
       * @var \SquareConnect\Model\CatalogObject[]
       */
     protected $values;
@@ -190,7 +191,7 @@ class CatalogItemOption implements ArrayAccess
   
     /**
      * Sets description
-     * @param string $description The item option's human-readable description. Displays for in the Square Point of Sale app for the seller and in the Online Store or on receipts for the buyer.
+     * @param string $description The item option's human-readable description. Displayed in the Square Point of Sale app for the seller and in the Online Store or on receipts for the buyer.
      * @return $this
      */
     public function setDescription($description)
@@ -228,7 +229,7 @@ class CatalogItemOption implements ArrayAccess
   
     /**
      * Sets values
-     * @param \SquareConnect\Model\CatalogObject[] $values A list of `CatalogObject`s containing the `CatalogItemOptionValue`s for this item.
+     * @param \SquareConnect\Model\CatalogObject[] $values A list of CatalogObjects containing the `CatalogItemOptionValue`s for this item.
      * @return $this
      */
     public function setValues($values)

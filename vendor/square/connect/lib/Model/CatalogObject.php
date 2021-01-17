@@ -29,6 +29,7 @@ class CatalogObject implements ArrayAccess
         'updated_at' => 'string',
         'version' => 'int',
         'is_deleted' => 'bool',
+        'custom_attribute_values' => 'map[string,\SquareConnect\Model\CatalogCustomAttributeValue]',
         'catalog_v1_ids' => '\SquareConnect\Model\CatalogV1Id[]',
         'present_at_all_locations' => 'bool',
         'present_at_location_ids' => 'string[]',
@@ -47,7 +48,9 @@ class CatalogObject implements ArrayAccess
         'image_data' => '\SquareConnect\Model\CatalogImage',
         'measurement_unit_data' => '\SquareConnect\Model\CatalogMeasurementUnit',
         'item_option_data' => '\SquareConnect\Model\CatalogItemOption',
-        'item_option_value_data' => '\SquareConnect\Model\CatalogItemOptionValue'
+        'item_option_value_data' => '\SquareConnect\Model\CatalogItemOptionValue',
+        'custom_attribute_definition_data' => '\SquareConnect\Model\CatalogCustomAttributeDefinition',
+        'quick_amounts_settings_data' => '\SquareConnect\Model\CatalogQuickAmountsSettings'
     );
   
     /** 
@@ -60,6 +63,7 @@ class CatalogObject implements ArrayAccess
         'updated_at' => 'updated_at',
         'version' => 'version',
         'is_deleted' => 'is_deleted',
+        'custom_attribute_values' => 'custom_attribute_values',
         'catalog_v1_ids' => 'catalog_v1_ids',
         'present_at_all_locations' => 'present_at_all_locations',
         'present_at_location_ids' => 'present_at_location_ids',
@@ -78,7 +82,9 @@ class CatalogObject implements ArrayAccess
         'image_data' => 'image_data',
         'measurement_unit_data' => 'measurement_unit_data',
         'item_option_data' => 'item_option_data',
-        'item_option_value_data' => 'item_option_value_data'
+        'item_option_value_data' => 'item_option_value_data',
+        'custom_attribute_definition_data' => 'custom_attribute_definition_data',
+        'quick_amounts_settings_data' => 'quick_amounts_settings_data'
     );
   
     /**
@@ -91,6 +97,7 @@ class CatalogObject implements ArrayAccess
         'updated_at' => 'setUpdatedAt',
         'version' => 'setVersion',
         'is_deleted' => 'setIsDeleted',
+        'custom_attribute_values' => 'setCustomAttributeValues',
         'catalog_v1_ids' => 'setCatalogV1Ids',
         'present_at_all_locations' => 'setPresentAtAllLocations',
         'present_at_location_ids' => 'setPresentAtLocationIds',
@@ -109,7 +116,9 @@ class CatalogObject implements ArrayAccess
         'image_data' => 'setImageData',
         'measurement_unit_data' => 'setMeasurementUnitData',
         'item_option_data' => 'setItemOptionData',
-        'item_option_value_data' => 'setItemOptionValueData'
+        'item_option_value_data' => 'setItemOptionValueData',
+        'custom_attribute_definition_data' => 'setCustomAttributeDefinitionData',
+        'quick_amounts_settings_data' => 'setQuickAmountsSettingsData'
     );
   
     /**
@@ -122,6 +131,7 @@ class CatalogObject implements ArrayAccess
         'updated_at' => 'getUpdatedAt',
         'version' => 'getVersion',
         'is_deleted' => 'getIsDeleted',
+        'custom_attribute_values' => 'getCustomAttributeValues',
         'catalog_v1_ids' => 'getCatalogV1Ids',
         'present_at_all_locations' => 'getPresentAtAllLocations',
         'present_at_location_ids' => 'getPresentAtLocationIds',
@@ -140,7 +150,9 @@ class CatalogObject implements ArrayAccess
         'image_data' => 'getImageData',
         'measurement_unit_data' => 'getMeasurementUnitData',
         'item_option_data' => 'getItemOptionData',
-        'item_option_value_data' => 'getItemOptionValueData'
+        'item_option_value_data' => 'getItemOptionValueData',
+        'custom_attribute_definition_data' => 'getCustomAttributeDefinitionData',
+        'quick_amounts_settings_data' => 'getQuickAmountsSettingsData'
     );
   
     /**
@@ -149,12 +161,12 @@ class CatalogObject implements ArrayAccess
       */
     protected $type;
     /**
-      * $id An identifier to reference this object in the catalog. When a new CatalogObject is inserted, the client should set the id to a temporary identifier starting with a `'#'` character. Other objects being inserted or updated within the same request may use this identifier to refer to the new object.  When the server receives the new object, it will supply a unique identifier that replaces the temporary identifier for all future references.
+      * $id An identifier to reference this object in the catalog. When a new `CatalogObject` is inserted, the client should set the id to a temporary identifier starting with a \"`#`\" character. Other objects being inserted or updated within the same request may use this identifier to refer to the new object.  When the server receives the new object, it will supply a unique identifier that replaces the temporary identifier for all future references.
       * @var string
       */
     protected $id;
     /**
-      * $updated_at Last modification [timestamp](#workingwithdates) in RFC 3339 format, e.g., `\"2016-08-15T23:59:33.123Z\"` would indicate the UTC time (denoted by `Z`) of August 15, 2016 at 23:59:33 and 123 milliseconds.
+      * $updated_at Last modification [timestamp](https://developer.squareup.com/docs/build-basics/working-with-dates) in RFC 3339 format, e.g., `\"2016-08-15T23:59:33.123Z\"` would indicate the UTC time (denoted by `Z`) of August 15, 2016 at 23:59:33 and 123 milliseconds.
       * @var string
       */
     protected $updated_at;
@@ -169,7 +181,12 @@ class CatalogObject implements ArrayAccess
       */
     protected $is_deleted;
     /**
-      * $catalog_v1_ids The Connect V1 IDs for this object at each `location` where it is present, where they differ from the object's Connect V2 ID. The field will only be present for objects that have been created or modified by legacy APIs.
+      * $custom_attribute_values Application-defined key/value attributes that are set at a global (location-independent) level. Custom Attribute Values are intended to store additional information about a Catalog Object or associations with an entity in another system. Do not use custom attributes to store any sensitive information (personally identifiable information, card details, etc.).  For CustomAttributesDefinitions defined by the app making the request, the map key is the key defined in the `CatalogCustomAttributeDefinition` (e.g. “reference_id”). For custom attributes created by other apps, the map key is the key defined in `CatalogCustomAttributeDefinition` prefixed with the application ID and a colon (eg. “abcd1234:reference_id”).
+      * @var map[string,\SquareConnect\Model\CatalogCustomAttributeValue]
+      */
+    protected $custom_attribute_values;
+    /**
+      * $catalog_v1_ids The Connect v1 IDs for this object at each location where it is present, where they differ from the object's Connect V2 ID. The field will only be present for objects that have been created or modified by legacy APIs.
       * @var \SquareConnect\Model\CatalogV1Id[]
       */
     protected $catalog_v1_ids;
@@ -263,6 +280,16 @@ class CatalogObject implements ArrayAccess
       * @var \SquareConnect\Model\CatalogItemOptionValue
       */
     protected $item_option_value_data;
+    /**
+      * $custom_attribute_definition_data Structured data for a `CatalogCustomAttributeDefinition`, set for CatalogObjects of type `CUSTOM_ATTRIBUTE_DEFINITION`.
+      * @var \SquareConnect\Model\CatalogCustomAttributeDefinition
+      */
+    protected $custom_attribute_definition_data;
+    /**
+      * $quick_amounts_settings_data Structured data for a `CatalogQuickAmountsSettings`, set for CatalogObjects of type `QUICK_AMOUNTS_SETTINGS`.
+      * @var \SquareConnect\Model\CatalogQuickAmountsSettings
+      */
+    protected $quick_amounts_settings_data;
 
     /**
      * Constructor
@@ -295,6 +322,11 @@ class CatalogObject implements ArrayAccess
               $this->is_deleted = $data["is_deleted"];
             } else {
               $this->is_deleted = null;
+            }
+            if (isset($data["custom_attribute_values"])) {
+              $this->custom_attribute_values = $data["custom_attribute_values"];
+            } else {
+              $this->custom_attribute_values = null;
             }
             if (isset($data["catalog_v1_ids"])) {
               $this->catalog_v1_ids = $data["catalog_v1_ids"];
@@ -391,6 +423,16 @@ class CatalogObject implements ArrayAccess
             } else {
               $this->item_option_value_data = null;
             }
+            if (isset($data["custom_attribute_definition_data"])) {
+              $this->custom_attribute_definition_data = $data["custom_attribute_definition_data"];
+            } else {
+              $this->custom_attribute_definition_data = null;
+            }
+            if (isset($data["quick_amounts_settings_data"])) {
+              $this->quick_amounts_settings_data = $data["quick_amounts_settings_data"];
+            } else {
+              $this->quick_amounts_settings_data = null;
+            }
         }
     }
     /**
@@ -423,7 +465,7 @@ class CatalogObject implements ArrayAccess
   
     /**
      * Sets id
-     * @param string $id An identifier to reference this object in the catalog. When a new CatalogObject is inserted, the client should set the id to a temporary identifier starting with a `'#'` character. Other objects being inserted or updated within the same request may use this identifier to refer to the new object.  When the server receives the new object, it will supply a unique identifier that replaces the temporary identifier for all future references.
+     * @param string $id An identifier to reference this object in the catalog. When a new `CatalogObject` is inserted, the client should set the id to a temporary identifier starting with a \"`#`\" character. Other objects being inserted or updated within the same request may use this identifier to refer to the new object.  When the server receives the new object, it will supply a unique identifier that replaces the temporary identifier for all future references.
      * @return $this
      */
     public function setId($id)
@@ -442,7 +484,7 @@ class CatalogObject implements ArrayAccess
   
     /**
      * Sets updated_at
-     * @param string $updated_at Last modification [timestamp](#workingwithdates) in RFC 3339 format, e.g., `\"2016-08-15T23:59:33.123Z\"` would indicate the UTC time (denoted by `Z`) of August 15, 2016 at 23:59:33 and 123 milliseconds.
+     * @param string $updated_at Last modification [timestamp](https://developer.squareup.com/docs/build-basics/working-with-dates) in RFC 3339 format, e.g., `\"2016-08-15T23:59:33.123Z\"` would indicate the UTC time (denoted by `Z`) of August 15, 2016 at 23:59:33 and 123 milliseconds.
      * @return $this
      */
     public function setUpdatedAt($updated_at)
@@ -489,6 +531,25 @@ class CatalogObject implements ArrayAccess
         return $this;
     }
     /**
+     * Gets custom_attribute_values
+     * @return map[string,\SquareConnect\Model\CatalogCustomAttributeValue]
+     */
+    public function getCustomAttributeValues()
+    {
+        return $this->custom_attribute_values;
+    }
+  
+    /**
+     * Sets custom_attribute_values
+     * @param map[string,\SquareConnect\Model\CatalogCustomAttributeValue] $custom_attribute_values Application-defined key/value attributes that are set at a global (location-independent) level. Custom Attribute Values are intended to store additional information about a Catalog Object or associations with an entity in another system. Do not use custom attributes to store any sensitive information (personally identifiable information, card details, etc.).  For CustomAttributesDefinitions defined by the app making the request, the map key is the key defined in the `CatalogCustomAttributeDefinition` (e.g. “reference_id”). For custom attributes created by other apps, the map key is the key defined in `CatalogCustomAttributeDefinition` prefixed with the application ID and a colon (eg. “abcd1234:reference_id”).
+     * @return $this
+     */
+    public function setCustomAttributeValues($custom_attribute_values)
+    {
+        $this->custom_attribute_values = $custom_attribute_values;
+        return $this;
+    }
+    /**
      * Gets catalog_v1_ids
      * @return \SquareConnect\Model\CatalogV1Id[]
      */
@@ -499,7 +560,7 @@ class CatalogObject implements ArrayAccess
   
     /**
      * Sets catalog_v1_ids
-     * @param \SquareConnect\Model\CatalogV1Id[] $catalog_v1_ids The Connect V1 IDs for this object at each `location` where it is present, where they differ from the object's Connect V2 ID. The field will only be present for objects that have been created or modified by legacy APIs.
+     * @param \SquareConnect\Model\CatalogV1Id[] $catalog_v1_ids The Connect v1 IDs for this object at each location where it is present, where they differ from the object's Connect V2 ID. The field will only be present for objects that have been created or modified by legacy APIs.
      * @return $this
      */
     public function setCatalogV1Ids($catalog_v1_ids)
@@ -847,6 +908,44 @@ class CatalogObject implements ArrayAccess
     public function setItemOptionValueData($item_option_value_data)
     {
         $this->item_option_value_data = $item_option_value_data;
+        return $this;
+    }
+    /**
+     * Gets custom_attribute_definition_data
+     * @return \SquareConnect\Model\CatalogCustomAttributeDefinition
+     */
+    public function getCustomAttributeDefinitionData()
+    {
+        return $this->custom_attribute_definition_data;
+    }
+  
+    /**
+     * Sets custom_attribute_definition_data
+     * @param \SquareConnect\Model\CatalogCustomAttributeDefinition $custom_attribute_definition_data Structured data for a `CatalogCustomAttributeDefinition`, set for CatalogObjects of type `CUSTOM_ATTRIBUTE_DEFINITION`.
+     * @return $this
+     */
+    public function setCustomAttributeDefinitionData($custom_attribute_definition_data)
+    {
+        $this->custom_attribute_definition_data = $custom_attribute_definition_data;
+        return $this;
+    }
+    /**
+     * Gets quick_amounts_settings_data
+     * @return \SquareConnect\Model\CatalogQuickAmountsSettings
+     */
+    public function getQuickAmountsSettingsData()
+    {
+        return $this->quick_amounts_settings_data;
+    }
+  
+    /**
+     * Sets quick_amounts_settings_data
+     * @param \SquareConnect\Model\CatalogQuickAmountsSettings $quick_amounts_settings_data Structured data for a `CatalogQuickAmountsSettings`, set for CatalogObjects of type `QUICK_AMOUNTS_SETTINGS`.
+     * @return $this
+     */
+    public function setQuickAmountsSettingsData($quick_amounts_settings_data)
+    {
+        $this->quick_amounts_settings_data = $quick_amounts_settings_data;
         return $this;
     }
     /**

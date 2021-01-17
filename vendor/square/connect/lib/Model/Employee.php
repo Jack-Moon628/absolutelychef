@@ -31,6 +31,7 @@ class Employee implements ArrayAccess
         'phone_number' => 'string',
         'location_ids' => 'string[]',
         'status' => 'string',
+        'is_owner' => 'bool',
         'created_at' => 'string',
         'updated_at' => 'string'
     );
@@ -47,6 +48,7 @@ class Employee implements ArrayAccess
         'phone_number' => 'phone_number',
         'location_ids' => 'location_ids',
         'status' => 'status',
+        'is_owner' => 'is_owner',
         'created_at' => 'created_at',
         'updated_at' => 'updated_at'
     );
@@ -63,6 +65,7 @@ class Employee implements ArrayAccess
         'phone_number' => 'setPhoneNumber',
         'location_ids' => 'setLocationIds',
         'status' => 'setStatus',
+        'is_owner' => 'setIsOwner',
         'created_at' => 'setCreatedAt',
         'updated_at' => 'setUpdatedAt'
     );
@@ -79,45 +82,51 @@ class Employee implements ArrayAccess
         'phone_number' => 'getPhoneNumber',
         'location_ids' => 'getLocationIds',
         'status' => 'getStatus',
+        'is_owner' => 'getIsOwner',
         'created_at' => 'getCreatedAt',
         'updated_at' => 'getUpdatedAt'
     );
   
     /**
-      * $id UUID for this `Employee`.
+      * $id UUID for this object.
       * @var string
       */
     protected $id;
     /**
-      * $first_name Given (first) name of the employee.
+      * $first_name The employee's first name.
       * @var string
       */
     protected $first_name;
     /**
-      * $last_name Family (last) name of the employee
+      * $last_name The employee's last name.
       * @var string
       */
     protected $last_name;
     /**
-      * $email Email of the employee
+      * $email The employee's email address
       * @var string
       */
     protected $email;
     /**
-      * $phone_number Phone number of the employee in E.164 format, i.e. \"+12125554250\"
+      * $phone_number The employee's phone number in E.164 format, i.e. \"+12125554250\"
       * @var string
       */
     protected $phone_number;
     /**
-      * $location_ids A list of location IDs where this employee has access.
+      * $location_ids A list of location IDs where this employee has access to.
       * @var string[]
       */
     protected $location_ids;
     /**
-      * $status Specifies the status of the employee being fetched. See [EmployeeStatus](#type-employeestatus) for possible values
+      * $status Specifies the status of the employees being fetched. See [EmployeeStatus](#type-employeestatus) for possible values
       * @var string
       */
     protected $status;
+    /**
+      * $is_owner Whether this employee is the owner of the merchant. Each merchant has one owner employee, and that employee has full authority over the account.
+      * @var bool
+      */
+    protected $is_owner;
     /**
       * $created_at A read-only timestamp in RFC 3339 format.
       * @var string
@@ -171,6 +180,11 @@ class Employee implements ArrayAccess
             } else {
               $this->status = null;
             }
+            if (isset($data["is_owner"])) {
+              $this->is_owner = $data["is_owner"];
+            } else {
+              $this->is_owner = null;
+            }
             if (isset($data["created_at"])) {
               $this->created_at = $data["created_at"];
             } else {
@@ -194,7 +208,7 @@ class Employee implements ArrayAccess
   
     /**
      * Sets id
-     * @param string $id UUID for this `Employee`.
+     * @param string $id UUID for this object.
      * @return $this
      */
     public function setId($id)
@@ -213,7 +227,7 @@ class Employee implements ArrayAccess
   
     /**
      * Sets first_name
-     * @param string $first_name Given (first) name of the employee.
+     * @param string $first_name The employee's first name.
      * @return $this
      */
     public function setFirstName($first_name)
@@ -232,7 +246,7 @@ class Employee implements ArrayAccess
   
     /**
      * Sets last_name
-     * @param string $last_name Family (last) name of the employee
+     * @param string $last_name The employee's last name.
      * @return $this
      */
     public function setLastName($last_name)
@@ -251,7 +265,7 @@ class Employee implements ArrayAccess
   
     /**
      * Sets email
-     * @param string $email Email of the employee
+     * @param string $email The employee's email address
      * @return $this
      */
     public function setEmail($email)
@@ -270,7 +284,7 @@ class Employee implements ArrayAccess
   
     /**
      * Sets phone_number
-     * @param string $phone_number Phone number of the employee in E.164 format, i.e. \"+12125554250\"
+     * @param string $phone_number The employee's phone number in E.164 format, i.e. \"+12125554250\"
      * @return $this
      */
     public function setPhoneNumber($phone_number)
@@ -289,7 +303,7 @@ class Employee implements ArrayAccess
   
     /**
      * Sets location_ids
-     * @param string[] $location_ids A list of location IDs where this employee has access.
+     * @param string[] $location_ids A list of location IDs where this employee has access to.
      * @return $this
      */
     public function setLocationIds($location_ids)
@@ -308,12 +322,31 @@ class Employee implements ArrayAccess
   
     /**
      * Sets status
-     * @param string $status Specifies the status of the employee being fetched. See [EmployeeStatus](#type-employeestatus) for possible values
+     * @param string $status Specifies the status of the employees being fetched. See [EmployeeStatus](#type-employeestatus) for possible values
      * @return $this
      */
     public function setStatus($status)
     {
         $this->status = $status;
+        return $this;
+    }
+    /**
+     * Gets is_owner
+     * @return bool
+     */
+    public function getIsOwner()
+    {
+        return $this->is_owner;
+    }
+  
+    /**
+     * Sets is_owner
+     * @param bool $is_owner Whether this employee is the owner of the merchant. Each merchant has one owner employee, and that employee has full authority over the account.
+     * @return $this
+     */
+    public function setIsOwner($is_owner)
+    {
+        $this->is_owner = $is_owner;
         return $this;
     }
     /**

@@ -36,7 +36,7 @@ class Transaction extends Model
      * @var array
      */
     protected $fillable = [
-        'status', 'amount', 'currency'
+        'status', 'amount', 'currency',
     ];
 
     /**

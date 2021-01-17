@@ -16,6 +16,7 @@ use \ArrayAccess;
  * @author   Square Inc.
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link     https://squareup.com/developers
+ * Note: This endpoint is in beta.
  */
 class PayOrderRequest implements ArrayAccess
 {
@@ -70,7 +71,7 @@ class PayOrderRequest implements ArrayAccess
       */
     protected $order_version;
     /**
-      * $payment_ids 
+      * $payment_ids The IDs of the `payments` to collect. The payment total must match the order total.
       * @var string[]
       */
     protected $payment_ids;
@@ -148,7 +149,7 @@ class PayOrderRequest implements ArrayAccess
   
     /**
      * Sets payment_ids
-     * @param string[] $payment_ids 
+     * @param string[] $payment_ids The IDs of the `payments` to collect. The payment total must match the order total.
      * @return $this
      */
     public function setPaymentIds($payment_ids)

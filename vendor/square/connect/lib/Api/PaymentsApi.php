@@ -108,7 +108,7 @@ class PaymentsApi
             $headerParams['Accept'] = $_header_accept;
         }
         $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
-        $headerParams['Square-Version'] = "2019-09-25";
+        $headerParams['Square-Version'] = "2020-05-28";
 
         
         
@@ -204,7 +204,7 @@ class PaymentsApi
             $headerParams['Accept'] = $_header_accept;
         }
         $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
-        $headerParams['Square-Version'] = "2019-09-25";
+        $headerParams['Square-Version'] = "2020-05-28";
 
         
         
@@ -259,12 +259,13 @@ class PaymentsApi
      * CompletePayment
      *
      * @param string $payment_id Unique ID identifying the payment to be completed. (required)
+     * @param \SquareConnect\Model\CompletePaymentRequest $body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
      * @return \SquareConnect\Model\CompletePaymentResponse
      * @throws \SquareConnect\ApiException on non-2xx response
      */
-    public function completePayment($payment_id)
+    public function completePayment($payment_id, $body)
     {
-        list($response, $statusCode, $httpHeader) = $this->completePaymentWithHttpInfo ($payment_id);
+        list($response, $statusCode, $httpHeader) = $this->completePaymentWithHttpInfo ($payment_id, $body);
         return $response; 
     }
 
@@ -275,15 +276,20 @@ class PaymentsApi
      * CompletePayment
      *
      * @param string $payment_id Unique ID identifying the payment to be completed. (required)
+     * @param \SquareConnect\Model\CompletePaymentRequest $body An object containing the fields to POST for the request.  See the corresponding object definition for field details. (required)
      * @return Array of \SquareConnect\Model\CompletePaymentResponse, HTTP status code, HTTP response headers (array of strings)
      * @throws \SquareConnect\ApiException on non-2xx response
      */
-    public function completePaymentWithHttpInfo($payment_id)
+    public function completePaymentWithHttpInfo($payment_id, $body)
     {
         
         // verify the required parameter 'payment_id' is set
         if ($payment_id === null) {
             throw new \InvalidArgumentException('Missing the required parameter $payment_id when calling completePayment');
+        }
+        // verify the required parameter 'body' is set
+        if ($body === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $body when calling completePayment');
         }
   
         // parse inputs
@@ -297,7 +303,7 @@ class PaymentsApi
             $headerParams['Accept'] = $_header_accept;
         }
         $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
-        $headerParams['Square-Version'] = "2019-09-25";
+        $headerParams['Square-Version'] = "2020-05-28";
 
         
         
@@ -313,7 +319,11 @@ class PaymentsApi
         $resourcePath = str_replace("{format}", "json", $resourcePath);
 
         
-        
+        // body params
+        $_tempBody = null;
+        if (isset($body)) {
+            $_tempBody = $body;
+        }
   
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -393,7 +403,7 @@ class PaymentsApi
             $headerParams['Accept'] = $_header_accept;
         }
         $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
-        $headerParams['Square-Version'] = "2019-09-25";
+        $headerParams['Square-Version'] = "2020-05-28";
 
         
         
@@ -486,7 +496,7 @@ class PaymentsApi
             $headerParams['Accept'] = $_header_accept;
         }
         $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
-        $headerParams['Square-Version'] = "2019-09-25";
+        $headerParams['Square-Version'] = "2020-05-28";
 
         
         
@@ -547,7 +557,7 @@ class PaymentsApi
      * @param string $end_time Timestamp for the end of the requested reporting period, in RFC 3339 format.  Default: The current time. (optional)
      * @param string $sort_order The order in which results are listed. - &#x60;ASC&#x60; - oldest to newest - &#x60;DESC&#x60; - newest to oldest (default). (optional)
      * @param string $cursor A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for the original query.  See [Pagination](https://developer.squareup.com/docs/basics/api101/pagination) for more information. (optional)
-     * @param string $location_id ID of location associated with payment (optional)
+     * @param string $location_id Limit results to the location supplied. By default, results are returned for all locations associated with the merchant. (optional)
      * @param int $total The exact amount in the total_money for a &#x60;Payment&#x60;. (optional)
      * @param string $last_4 The last 4 digits of &#x60;Payment&#x60; card. (optional)
      * @param string $card_brand The brand of &#x60;Payment&#x60; card. For example, &#x60;VISA&#x60; (optional)
@@ -570,7 +580,7 @@ class PaymentsApi
      * @param string $end_time Timestamp for the end of the requested reporting period, in RFC 3339 format.  Default: The current time. (optional)
      * @param string $sort_order The order in which results are listed. - &#x60;ASC&#x60; - oldest to newest - &#x60;DESC&#x60; - newest to oldest (default). (optional)
      * @param string $cursor A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for the original query.  See [Pagination](https://developer.squareup.com/docs/basics/api101/pagination) for more information. (optional)
-     * @param string $location_id ID of location associated with payment (optional)
+     * @param string $location_id Limit results to the location supplied. By default, results are returned for all locations associated with the merchant. (optional)
      * @param int $total The exact amount in the total_money for a &#x60;Payment&#x60;. (optional)
      * @param string $last_4 The last 4 digits of &#x60;Payment&#x60; card. (optional)
      * @param string $card_brand The brand of &#x60;Payment&#x60; card. For example, &#x60;VISA&#x60; (optional)
@@ -592,7 +602,7 @@ class PaymentsApi
             $headerParams['Accept'] = $_header_accept;
         }
         $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json'));
-        $headerParams['Square-Version'] = "2019-09-25";
+        $headerParams['Square-Version'] = "2020-05-28";
 
         // query params
         if ($begin_time !== null) {

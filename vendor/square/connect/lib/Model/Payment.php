@@ -34,6 +34,9 @@ class Payment implements ArrayAccess
         'processing_fee' => '\SquareConnect\Model\ProcessingFee[]',
         'refunded_money' => '\SquareConnect\Model\Money',
         'status' => 'string',
+        'delay_duration' => 'string',
+        'delay_action' => 'string',
+        'delayed_until' => 'string',
         'source_type' => 'string',
         'card_details' => '\SquareConnect\Model\CardPaymentDetails',
         'location_id' => 'string',
@@ -45,7 +48,10 @@ class Payment implements ArrayAccess
         'buyer_email_address' => 'string',
         'billing_address' => '\SquareConnect\Model\Address',
         'shipping_address' => '\SquareConnect\Model\Address',
-        'note' => 'string'
+        'note' => 'string',
+        'statement_description_identifier' => 'string',
+        'receipt_number' => 'string',
+        'receipt_url' => 'string'
     );
   
     /** 
@@ -63,6 +69,9 @@ class Payment implements ArrayAccess
         'processing_fee' => 'processing_fee',
         'refunded_money' => 'refunded_money',
         'status' => 'status',
+        'delay_duration' => 'delay_duration',
+        'delay_action' => 'delay_action',
+        'delayed_until' => 'delayed_until',
         'source_type' => 'source_type',
         'card_details' => 'card_details',
         'location_id' => 'location_id',
@@ -74,7 +83,10 @@ class Payment implements ArrayAccess
         'buyer_email_address' => 'buyer_email_address',
         'billing_address' => 'billing_address',
         'shipping_address' => 'shipping_address',
-        'note' => 'note'
+        'note' => 'note',
+        'statement_description_identifier' => 'statement_description_identifier',
+        'receipt_number' => 'receipt_number',
+        'receipt_url' => 'receipt_url'
     );
   
     /**
@@ -92,6 +104,9 @@ class Payment implements ArrayAccess
         'processing_fee' => 'setProcessingFee',
         'refunded_money' => 'setRefundedMoney',
         'status' => 'setStatus',
+        'delay_duration' => 'setDelayDuration',
+        'delay_action' => 'setDelayAction',
+        'delayed_until' => 'setDelayedUntil',
         'source_type' => 'setSourceType',
         'card_details' => 'setCardDetails',
         'location_id' => 'setLocationId',
@@ -103,7 +118,10 @@ class Payment implements ArrayAccess
         'buyer_email_address' => 'setBuyerEmailAddress',
         'billing_address' => 'setBillingAddress',
         'shipping_address' => 'setShippingAddress',
-        'note' => 'setNote'
+        'note' => 'setNote',
+        'statement_description_identifier' => 'setStatementDescriptionIdentifier',
+        'receipt_number' => 'setReceiptNumber',
+        'receipt_url' => 'setReceiptUrl'
     );
   
     /**
@@ -121,6 +139,9 @@ class Payment implements ArrayAccess
         'processing_fee' => 'getProcessingFee',
         'refunded_money' => 'getRefundedMoney',
         'status' => 'getStatus',
+        'delay_duration' => 'getDelayDuration',
+        'delay_action' => 'getDelayAction',
+        'delayed_until' => 'getDelayedUntil',
         'source_type' => 'getSourceType',
         'card_details' => 'getCardDetails',
         'location_id' => 'getLocationId',
@@ -132,7 +153,10 @@ class Payment implements ArrayAccess
         'buyer_email_address' => 'getBuyerEmailAddress',
         'billing_address' => 'getBillingAddress',
         'shipping_address' => 'getShippingAddress',
-        'note' => 'getNote'
+        'note' => 'getNote',
+        'statement_description_identifier' => 'getStatementDescriptionIdentifier',
+        'receipt_number' => 'getReceiptNumber',
+        'receipt_url' => 'getReceiptUrl'
     );
   
     /**
@@ -186,7 +210,22 @@ class Payment implements ArrayAccess
       */
     protected $status;
     /**
-      * $source_type The source type for this payment  Current values include: `CARD`
+      * $delay_duration The duration of time after the payment's creation when Square automatically applies the `delay_action` to the payment. This automatic `delay_action` applies only to payments that don't reach a terminal state (COMPLETED, CANCELED, or FAILED) before the `delay_duration` time period.  This field is specified as a time duration, in RFC 3339 format.  Notes: This feature is only supported for card payments.  Default:  - Card Present payments: \"PT36H\" (36 hours) from the creation time. - Card Not Present payments: \"P7D\" (7 days) from the creation time.
+      * @var string
+      */
+    protected $delay_duration;
+    /**
+      * $delay_action The action to be applied to the payment when the `delay_duration` has elapsed. This field is read only.  Current values include: `CANCEL`
+      * @var string
+      */
+    protected $delay_action;
+    /**
+      * $delayed_until Read only timestamp of when the `delay_action` will automatically be applied, in RFC 3339 format.  Note that this field is calculated by summing the payment's `delay_duration` and `created_at` fields. The `created_at` field is generated by Square and may not exactly match the time on your local machine.
+      * @var string
+      */
+    protected $delayed_until;
+    /**
+      * $source_type The source type for this payment  Current values include: `CARD`.
       * @var string
       */
     protected $source_type;
@@ -211,7 +250,7 @@ class Payment implements ArrayAccess
       */
     protected $reference_id;
     /**
-      * $customer_id An optional customer_id to be entered by the developer when creating a payment.
+      * $customer_id The `Customer` ID of the customer associated with the payment.
       * @var string
       */
     protected $customer_id;
@@ -245,6 +284,21 @@ class Payment implements ArrayAccess
       * @var string
       */
     protected $note;
+    /**
+      * $statement_description_identifier Additional payment information that gets added on the customer's card statement as part of the statement description.  Note that the `statement_description_identifier` may get truncated on the statement description to fit the required information including the Square identifier (SQ *) and name of the merchant taking the payment.
+      * @var string
+      */
+    protected $statement_description_identifier;
+    /**
+      * $receipt_number The payment's receipt number. The field will be missing if a payment is CANCELED
+      * @var string
+      */
+    protected $receipt_number;
+    /**
+      * $receipt_url The URL for the payment's receipt. The field will only be populated for COMPLETED payments.
+      * @var string
+      */
+    protected $receipt_url;
 
     /**
      * Constructor
@@ -302,6 +356,21 @@ class Payment implements ArrayAccess
               $this->status = $data["status"];
             } else {
               $this->status = null;
+            }
+            if (isset($data["delay_duration"])) {
+              $this->delay_duration = $data["delay_duration"];
+            } else {
+              $this->delay_duration = null;
+            }
+            if (isset($data["delay_action"])) {
+              $this->delay_action = $data["delay_action"];
+            } else {
+              $this->delay_action = null;
+            }
+            if (isset($data["delayed_until"])) {
+              $this->delayed_until = $data["delayed_until"];
+            } else {
+              $this->delayed_until = null;
             }
             if (isset($data["source_type"])) {
               $this->source_type = $data["source_type"];
@@ -362,6 +431,21 @@ class Payment implements ArrayAccess
               $this->note = $data["note"];
             } else {
               $this->note = null;
+            }
+            if (isset($data["statement_description_identifier"])) {
+              $this->statement_description_identifier = $data["statement_description_identifier"];
+            } else {
+              $this->statement_description_identifier = null;
+            }
+            if (isset($data["receipt_number"])) {
+              $this->receipt_number = $data["receipt_number"];
+            } else {
+              $this->receipt_number = null;
+            }
+            if (isset($data["receipt_url"])) {
+              $this->receipt_url = $data["receipt_url"];
+            } else {
+              $this->receipt_url = null;
             }
         }
     }
@@ -556,6 +640,63 @@ class Payment implements ArrayAccess
         return $this;
     }
     /**
+     * Gets delay_duration
+     * @return string
+     */
+    public function getDelayDuration()
+    {
+        return $this->delay_duration;
+    }
+  
+    /**
+     * Sets delay_duration
+     * @param string $delay_duration The duration of time after the payment's creation when Square automatically applies the `delay_action` to the payment. This automatic `delay_action` applies only to payments that don't reach a terminal state (COMPLETED, CANCELED, or FAILED) before the `delay_duration` time period.  This field is specified as a time duration, in RFC 3339 format.  Notes: This feature is only supported for card payments.  Default:  - Card Present payments: \"PT36H\" (36 hours) from the creation time. - Card Not Present payments: \"P7D\" (7 days) from the creation time.
+     * @return $this
+     */
+    public function setDelayDuration($delay_duration)
+    {
+        $this->delay_duration = $delay_duration;
+        return $this;
+    }
+    /**
+     * Gets delay_action
+     * @return string
+     */
+    public function getDelayAction()
+    {
+        return $this->delay_action;
+    }
+  
+    /**
+     * Sets delay_action
+     * @param string $delay_action The action to be applied to the payment when the `delay_duration` has elapsed. This field is read only.  Current values include: `CANCEL`
+     * @return $this
+     */
+    public function setDelayAction($delay_action)
+    {
+        $this->delay_action = $delay_action;
+        return $this;
+    }
+    /**
+     * Gets delayed_until
+     * @return string
+     */
+    public function getDelayedUntil()
+    {
+        return $this->delayed_until;
+    }
+  
+    /**
+     * Sets delayed_until
+     * @param string $delayed_until Read only timestamp of when the `delay_action` will automatically be applied, in RFC 3339 format.  Note that this field is calculated by summing the payment's `delay_duration` and `created_at` fields. The `created_at` field is generated by Square and may not exactly match the time on your local machine.
+     * @return $this
+     */
+    public function setDelayedUntil($delayed_until)
+    {
+        $this->delayed_until = $delayed_until;
+        return $this;
+    }
+    /**
      * Gets source_type
      * @return string
      */
@@ -566,7 +707,7 @@ class Payment implements ArrayAccess
   
     /**
      * Sets source_type
-     * @param string $source_type The source type for this payment  Current values include: `CARD`
+     * @param string $source_type The source type for this payment  Current values include: `CARD`.
      * @return $this
      */
     public function setSourceType($source_type)
@@ -661,7 +802,7 @@ class Payment implements ArrayAccess
   
     /**
      * Sets customer_id
-     * @param string $customer_id An optional customer_id to be entered by the developer when creating a payment.
+     * @param string $customer_id The `Customer` ID of the customer associated with the payment.
      * @return $this
      */
     public function setCustomerId($customer_id)
@@ -781,6 +922,63 @@ class Payment implements ArrayAccess
     public function setNote($note)
     {
         $this->note = $note;
+        return $this;
+    }
+    /**
+     * Gets statement_description_identifier
+     * @return string
+     */
+    public function getStatementDescriptionIdentifier()
+    {
+        return $this->statement_description_identifier;
+    }
+  
+    /**
+     * Sets statement_description_identifier
+     * @param string $statement_description_identifier Additional payment information that gets added on the customer's card statement as part of the statement description.  Note that the `statement_description_identifier` may get truncated on the statement description to fit the required information including the Square identifier (SQ *) and name of the merchant taking the payment.
+     * @return $this
+     */
+    public function setStatementDescriptionIdentifier($statement_description_identifier)
+    {
+        $this->statement_description_identifier = $statement_description_identifier;
+        return $this;
+    }
+    /**
+     * Gets receipt_number
+     * @return string
+     */
+    public function getReceiptNumber()
+    {
+        return $this->receipt_number;
+    }
+  
+    /**
+     * Sets receipt_number
+     * @param string $receipt_number The payment's receipt number. The field will be missing if a payment is CANCELED
+     * @return $this
+     */
+    public function setReceiptNumber($receipt_number)
+    {
+        $this->receipt_number = $receipt_number;
+        return $this;
+    }
+    /**
+     * Gets receipt_url
+     * @return string
+     */
+    public function getReceiptUrl()
+    {
+        return $this->receipt_url;
+    }
+  
+    /**
+     * Sets receipt_url
+     * @param string $receipt_url The URL for the payment's receipt. The field will only be populated for COMPLETED payments.
+     * @return $this
+     */
+    public function setReceiptUrl($receipt_url)
+    {
+        $this->receipt_url = $receipt_url;
         return $this;
     }
     /**

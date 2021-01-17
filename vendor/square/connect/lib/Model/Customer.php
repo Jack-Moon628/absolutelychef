@@ -40,7 +40,9 @@ class Customer implements ArrayAccess
         'note' => 'string',
         'preferences' => '\SquareConnect\Model\CustomerPreferences',
         'groups' => '\SquareConnect\Model\CustomerGroupInfo[]',
-        'creation_source' => 'string'
+        'creation_source' => 'string',
+        'group_ids' => 'string[]',
+        'segment_ids' => 'string[]'
     );
   
     /** 
@@ -64,7 +66,9 @@ class Customer implements ArrayAccess
         'note' => 'note',
         'preferences' => 'preferences',
         'groups' => 'groups',
-        'creation_source' => 'creation_source'
+        'creation_source' => 'creation_source',
+        'group_ids' => 'group_ids',
+        'segment_ids' => 'segment_ids'
     );
   
     /**
@@ -88,7 +92,9 @@ class Customer implements ArrayAccess
         'note' => 'setNote',
         'preferences' => 'setPreferences',
         'groups' => 'setGroups',
-        'creation_source' => 'setCreationSource'
+        'creation_source' => 'setCreationSource',
+        'group_ids' => 'setGroupIds',
+        'segment_ids' => 'setSegmentIds'
     );
   
     /**
@@ -112,86 +118,88 @@ class Customer implements ArrayAccess
         'note' => 'getNote',
         'preferences' => 'getPreferences',
         'groups' => 'getGroups',
-        'creation_source' => 'getCreationSource'
+        'creation_source' => 'getCreationSource',
+        'group_ids' => 'getGroupIds',
+        'segment_ids' => 'getSegmentIds'
     );
   
     /**
-      * $id The customer's unique ID.
+      * $id A unique Square-assigned ID for the customer profile.
       * @var string
       */
     protected $id;
     /**
-      * $created_at The time when the customer was created, in RFC 3339 format.
+      * $created_at The timestamp when the customer profile was created, in RFC 3339 format.
       * @var string
       */
     protected $created_at;
     /**
-      * $updated_at The time when the customer was last updated, in RFC 3339 format.
+      * $updated_at The timestamp when the customer profile was last updated, in RFC 3339 format.
       * @var string
       */
     protected $updated_at;
     /**
-      * $cards The payment details of the customer's cards on file.
+      * $cards Payment details of cards stored on file for the customer profile.
       * @var \SquareConnect\Model\Card[]
       */
     protected $cards;
     /**
-      * $given_name The customer's given (i.e., first) name.
+      * $given_name The given (i.e., first) name associated with the customer profile.
       * @var string
       */
     protected $given_name;
     /**
-      * $family_name The customer's family (i.e., last) name.
+      * $family_name The family (i.e., last) name associated with the customer profile.
       * @var string
       */
     protected $family_name;
     /**
-      * $nickname The customer's nickname.
+      * $nickname A nickname for the customer profile.
       * @var string
       */
     protected $nickname;
     /**
-      * $company_name The name of the customer's company.
+      * $company_name A business name associated with the customer profile.
       * @var string
       */
     protected $company_name;
     /**
-      * $email_address The customer's email address.
+      * $email_address The email address associated with the customer profile.
       * @var string
       */
     protected $email_address;
     /**
-      * $address The customer's physical address.
+      * $address The physical address associated with the customer profile.
       * @var \SquareConnect\Model\Address
       */
     protected $address;
     /**
-      * $phone_number The customer's phone number.
+      * $phone_number The 11-digit phone number associated with the customer profile.
       * @var string
       */
     protected $phone_number;
     /**
-      * $birthday The customer's birthday in RFC-3339 format. Year is optional, timezone and times are not allowed. Example: `0000-09-01T00:00:00-00:00` for a birthday on September 1st. `1998-09-01T00:00:00-00:00` for a birthday on September 1st 1998.
+      * $birthday The birthday associated with the customer profile, in RFC-3339 format. Year is optional, timezone and times are not allowed. For example: `0000-09-01T00:00:00-00:00` indicates a birthday on September 1st. `1998-09-01T00:00:00-00:00` indications a birthday on September 1st __1998__.
       * @var string
       */
     protected $birthday;
     /**
-      * $reference_id A second ID you can set to associate the customer with an entity in another system.
+      * $reference_id An optional, second ID used to associate the customer profile with an entity in another system.
       * @var string
       */
     protected $reference_id;
     /**
-      * $note A note to associate with the customer.
+      * $note A custom note associated with the customer profile.
       * @var string
       */
     protected $note;
     /**
-      * $preferences The customer's preferences.
+      * $preferences Represents general customer preferences.
       * @var \SquareConnect\Model\CustomerPreferences
       */
     protected $preferences;
     /**
-      * $groups The groups the customer belongs to.
+      * $groups The customer groups and segments the customer belongs to. This deprecated field has been replaced with  the dedicated `group_ids` for customer groups and the dedicated `segment_ids` field for customer segments. You can retrieve information about a given customer group and segment respectively using the Customer Groups API and Customer Segments API.
       * @var \SquareConnect\Model\CustomerGroupInfo[]
       */
     protected $groups;
@@ -200,6 +208,16 @@ class Customer implements ArrayAccess
       * @var string
       */
     protected $creation_source;
+    /**
+      * $group_ids The IDs of customer groups the customer belongs to.
+      * @var string[]
+      */
+    protected $group_ids;
+    /**
+      * $segment_ids The IDs of segments the customer belongs to.
+      * @var string[]
+      */
+    protected $segment_ids;
 
     /**
      * Constructor
@@ -293,6 +311,16 @@ class Customer implements ArrayAccess
             } else {
               $this->creation_source = null;
             }
+            if (isset($data["group_ids"])) {
+              $this->group_ids = $data["group_ids"];
+            } else {
+              $this->group_ids = null;
+            }
+            if (isset($data["segment_ids"])) {
+              $this->segment_ids = $data["segment_ids"];
+            } else {
+              $this->segment_ids = null;
+            }
         }
     }
     /**
@@ -306,7 +334,7 @@ class Customer implements ArrayAccess
   
     /**
      * Sets id
-     * @param string $id The customer's unique ID.
+     * @param string $id A unique Square-assigned ID for the customer profile.
      * @return $this
      */
     public function setId($id)
@@ -325,7 +353,7 @@ class Customer implements ArrayAccess
   
     /**
      * Sets created_at
-     * @param string $created_at The time when the customer was created, in RFC 3339 format.
+     * @param string $created_at The timestamp when the customer profile was created, in RFC 3339 format.
      * @return $this
      */
     public function setCreatedAt($created_at)
@@ -344,7 +372,7 @@ class Customer implements ArrayAccess
   
     /**
      * Sets updated_at
-     * @param string $updated_at The time when the customer was last updated, in RFC 3339 format.
+     * @param string $updated_at The timestamp when the customer profile was last updated, in RFC 3339 format.
      * @return $this
      */
     public function setUpdatedAt($updated_at)
@@ -363,7 +391,7 @@ class Customer implements ArrayAccess
   
     /**
      * Sets cards
-     * @param \SquareConnect\Model\Card[] $cards The payment details of the customer's cards on file.
+     * @param \SquareConnect\Model\Card[] $cards Payment details of cards stored on file for the customer profile.
      * @return $this
      */
     public function setCards($cards)
@@ -382,7 +410,7 @@ class Customer implements ArrayAccess
   
     /**
      * Sets given_name
-     * @param string $given_name The customer's given (i.e., first) name.
+     * @param string $given_name The given (i.e., first) name associated with the customer profile.
      * @return $this
      */
     public function setGivenName($given_name)
@@ -401,7 +429,7 @@ class Customer implements ArrayAccess
   
     /**
      * Sets family_name
-     * @param string $family_name The customer's family (i.e., last) name.
+     * @param string $family_name The family (i.e., last) name associated with the customer profile.
      * @return $this
      */
     public function setFamilyName($family_name)
@@ -420,7 +448,7 @@ class Customer implements ArrayAccess
   
     /**
      * Sets nickname
-     * @param string $nickname The customer's nickname.
+     * @param string $nickname A nickname for the customer profile.
      * @return $this
      */
     public function setNickname($nickname)
@@ -439,7 +467,7 @@ class Customer implements ArrayAccess
   
     /**
      * Sets company_name
-     * @param string $company_name The name of the customer's company.
+     * @param string $company_name A business name associated with the customer profile.
      * @return $this
      */
     public function setCompanyName($company_name)
@@ -458,7 +486,7 @@ class Customer implements ArrayAccess
   
     /**
      * Sets email_address
-     * @param string $email_address The customer's email address.
+     * @param string $email_address The email address associated with the customer profile.
      * @return $this
      */
     public function setEmailAddress($email_address)
@@ -477,7 +505,7 @@ class Customer implements ArrayAccess
   
     /**
      * Sets address
-     * @param \SquareConnect\Model\Address $address The customer's physical address.
+     * @param \SquareConnect\Model\Address $address The physical address associated with the customer profile.
      * @return $this
      */
     public function setAddress($address)
@@ -496,7 +524,7 @@ class Customer implements ArrayAccess
   
     /**
      * Sets phone_number
-     * @param string $phone_number The customer's phone number.
+     * @param string $phone_number The 11-digit phone number associated with the customer profile.
      * @return $this
      */
     public function setPhoneNumber($phone_number)
@@ -515,7 +543,7 @@ class Customer implements ArrayAccess
   
     /**
      * Sets birthday
-     * @param string $birthday The customer's birthday in RFC-3339 format. Year is optional, timezone and times are not allowed. Example: `0000-09-01T00:00:00-00:00` for a birthday on September 1st. `1998-09-01T00:00:00-00:00` for a birthday on September 1st 1998.
+     * @param string $birthday The birthday associated with the customer profile, in RFC-3339 format. Year is optional, timezone and times are not allowed. For example: `0000-09-01T00:00:00-00:00` indicates a birthday on September 1st. `1998-09-01T00:00:00-00:00` indications a birthday on September 1st __1998__.
      * @return $this
      */
     public function setBirthday($birthday)
@@ -534,7 +562,7 @@ class Customer implements ArrayAccess
   
     /**
      * Sets reference_id
-     * @param string $reference_id A second ID you can set to associate the customer with an entity in another system.
+     * @param string $reference_id An optional, second ID used to associate the customer profile with an entity in another system.
      * @return $this
      */
     public function setReferenceId($reference_id)
@@ -553,7 +581,7 @@ class Customer implements ArrayAccess
   
     /**
      * Sets note
-     * @param string $note A note to associate with the customer.
+     * @param string $note A custom note associated with the customer profile.
      * @return $this
      */
     public function setNote($note)
@@ -572,7 +600,7 @@ class Customer implements ArrayAccess
   
     /**
      * Sets preferences
-     * @param \SquareConnect\Model\CustomerPreferences $preferences The customer's preferences.
+     * @param \SquareConnect\Model\CustomerPreferences $preferences Represents general customer preferences.
      * @return $this
      */
     public function setPreferences($preferences)
@@ -591,7 +619,7 @@ class Customer implements ArrayAccess
   
     /**
      * Sets groups
-     * @param \SquareConnect\Model\CustomerGroupInfo[] $groups The groups the customer belongs to.
+     * @param \SquareConnect\Model\CustomerGroupInfo[] $groups The customer groups and segments the customer belongs to. This deprecated field has been replaced with  the dedicated `group_ids` for customer groups and the dedicated `segment_ids` field for customer segments. You can retrieve information about a given customer group and segment respectively using the Customer Groups API and Customer Segments API.
      * @return $this
      */
     public function setGroups($groups)
@@ -616,6 +644,44 @@ class Customer implements ArrayAccess
     public function setCreationSource($creation_source)
     {
         $this->creation_source = $creation_source;
+        return $this;
+    }
+    /**
+     * Gets group_ids
+     * @return string[]
+     */
+    public function getGroupIds()
+    {
+        return $this->group_ids;
+    }
+  
+    /**
+     * Sets group_ids
+     * @param string[] $group_ids The IDs of customer groups the customer belongs to.
+     * @return $this
+     */
+    public function setGroupIds($group_ids)
+    {
+        $this->group_ids = $group_ids;
+        return $this;
+    }
+    /**
+     * Gets segment_ids
+     * @return string[]
+     */
+    public function getSegmentIds()
+    {
+        return $this->segment_ids;
+    }
+  
+    /**
+     * Sets segment_ids
+     * @param string[] $segment_ids The IDs of segments the customer belongs to.
+     * @return $this
+     */
+    public function setSegmentIds($segment_ids)
+    {
+        $this->segment_ids = $segment_ids;
         return $this;
     }
     /**

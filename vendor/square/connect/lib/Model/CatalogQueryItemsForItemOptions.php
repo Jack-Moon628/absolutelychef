@@ -16,6 +16,7 @@ use \ArrayAccess;
  * @author   Square Inc.
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  * @link     https://squareup.com/developers
+ * Note: This endpoint is in beta.
  */
 class CatalogQueryItemsForItemOptions implements ArrayAccess
 {
@@ -52,7 +53,7 @@ class CatalogQueryItemsForItemOptions implements ArrayAccess
     );
   
     /**
-      * $item_option_ids A set of `CatalogItemOption` IDs to be used to find associated `CatalogItem` will be returned.
+      * $item_option_ids A set of `CatalogItemOption` IDs to be used to find associated `CatalogItem`s. All Items that contain all of the given Item Options (in any order) will be returned.
       * @var string[]
       */
     protected $item_option_ids;
@@ -82,7 +83,7 @@ class CatalogQueryItemsForItemOptions implements ArrayAccess
   
     /**
      * Sets item_option_ids
-     * @param string[] $item_option_ids A set of `CatalogItemOption` IDs to be used to find associated `CatalogItem` will be returned.
+     * @param string[] $item_option_ids A set of `CatalogItemOption` IDs to be used to find associated `CatalogItem`s. All Items that contain all of the given Item Options (in any order) will be returned.
      * @return $this
      */
     public function setItemOptionIds($item_option_ids)

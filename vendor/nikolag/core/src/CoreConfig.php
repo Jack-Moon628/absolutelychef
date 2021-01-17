@@ -8,7 +8,8 @@ use Nikolag\Core\Traits\Jsonable;
 
 class CoreConfig
 {
-    use Arrayable, Jsonable;
+    use Arrayable;
+    use Jsonable;
 
     /**
      * @var array

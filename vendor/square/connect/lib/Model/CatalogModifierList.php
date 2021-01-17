@@ -25,6 +25,7 @@ class CatalogModifierList implements ArrayAccess
       */
     static $swaggerTypes = array(
         'name' => 'string',
+        'ordinal' => 'int',
         'selection_type' => 'string',
         'modifiers' => '\SquareConnect\Model\CatalogObject[]'
     );
@@ -35,6 +36,7 @@ class CatalogModifierList implements ArrayAccess
       */
     static $attributeMap = array(
         'name' => 'name',
+        'ordinal' => 'ordinal',
         'selection_type' => 'selection_type',
         'modifiers' => 'modifiers'
     );
@@ -45,6 +47,7 @@ class CatalogModifierList implements ArrayAccess
       */
     static $setters = array(
         'name' => 'setName',
+        'ordinal' => 'setOrdinal',
         'selection_type' => 'setSelectionType',
         'modifiers' => 'setModifiers'
     );
@@ -55,22 +58,28 @@ class CatalogModifierList implements ArrayAccess
       */
     static $getters = array(
         'name' => 'getName',
+        'ordinal' => 'getOrdinal',
         'selection_type' => 'getSelectionType',
         'modifiers' => 'getModifiers'
     );
   
     /**
-      * $name The `CatalogModifierList`'s name. Searchable. This field has max length of 255 Unicode code points.
+      * $name A searchable name for the `CatalogModifierList`. This field has max length of 255 Unicode code points.
       * @var string
       */
     protected $name;
+    /**
+      * $ordinal Determines where this `CatalogModifierList` appears in a list of `CatalogModifierList` values.
+      * @var int
+      */
+    protected $ordinal;
     /**
       * $selection_type Indicates whether multiple options from the `CatalogModifierList` can be applied to a single `CatalogItem`. See [CatalogModifierListSelectionType](#type-catalogmodifierlistselectiontype) for possible values
       * @var string
       */
     protected $selection_type;
     /**
-      * $modifiers The options included in the `CatalogModifierList`. You must include at least one `CatalogModifier`. Each `CatalogObject` must have type `MODIFIER` and contain `CatalogModifier` data.
+      * $modifiers The options included in the `CatalogModifierList`. You must include at least one `CatalogModifier`. Each CatalogObject must have type `MODIFIER` and contain `CatalogModifier` data.
       * @var \SquareConnect\Model\CatalogObject[]
       */
     protected $modifiers;
@@ -86,6 +95,11 @@ class CatalogModifierList implements ArrayAccess
               $this->name = $data["name"];
             } else {
               $this->name = null;
+            }
+            if (isset($data["ordinal"])) {
+              $this->ordinal = $data["ordinal"];
+            } else {
+              $this->ordinal = null;
             }
             if (isset($data["selection_type"])) {
               $this->selection_type = $data["selection_type"];
@@ -110,12 +124,31 @@ class CatalogModifierList implements ArrayAccess
   
     /**
      * Sets name
-     * @param string $name The `CatalogModifierList`'s name. Searchable. This field has max length of 255 Unicode code points.
+     * @param string $name A searchable name for the `CatalogModifierList`. This field has max length of 255 Unicode code points.
      * @return $this
      */
     public function setName($name)
     {
         $this->name = $name;
+        return $this;
+    }
+    /**
+     * Gets ordinal
+     * @return int
+     */
+    public function getOrdinal()
+    {
+        return $this->ordinal;
+    }
+  
+    /**
+     * Sets ordinal
+     * @param int $ordinal Determines where this `CatalogModifierList` appears in a list of `CatalogModifierList` values.
+     * @return $this
+     */
+    public function setOrdinal($ordinal)
+    {
+        $this->ordinal = $ordinal;
         return $this;
     }
     /**
@@ -148,7 +181,7 @@ class CatalogModifierList implements ArrayAccess
   
     /**
      * Sets modifiers
-     * @param \SquareConnect\Model\CatalogObject[] $modifiers The options included in the `CatalogModifierList`. You must include at least one `CatalogModifier`. Each `CatalogObject` must have type `MODIFIER` and contain `CatalogModifier` data.
+     * @param \SquareConnect\Model\CatalogObject[] $modifiers The options included in the `CatalogModifierList`. You must include at least one `CatalogModifier`. Each CatalogObject must have type `MODIFIER` and contain `CatalogModifier` data.
      * @return $this
      */
     public function setModifiers($modifiers)

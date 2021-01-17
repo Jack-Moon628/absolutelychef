@@ -2,7 +2,7 @@
 
 ### Description
 
-The type of a `CatalogItem`. Connect V2 only allows the creation of `REGULAR` or `APPOINTMENTS_SERVICE` items.
+The type of a CatalogItem. Connect V2 only allows the creation of `REGULAR` or `APPOINTMENTS_SERVICE` items.
 
 ## Properties
 Name | Type
@@ -10,8 +10,6 @@ Name | Type
 **REGULAR** | string
 **GIFT_CARD** | string
 **APPOINTMENTS_SERVICE** | string
-**RETAIL_ITEM** | string
-**RESTAURANT_ITEM** | string
 
 Note: All properties are protected and only accessed via getters and setters.
 

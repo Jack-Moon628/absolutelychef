@@ -2,7 +2,7 @@
 
 ### Description
 
-Defines the fields that are included in the response body of a request to the CreateCheckout endpoint.
+Defines the fields that are included in the response body of a request to the __CreateCheckout__ endpoint.
 
 ## Properties
 Name | Getter | Setter | Type | Description | Notes

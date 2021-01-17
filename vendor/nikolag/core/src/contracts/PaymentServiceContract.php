@@ -23,7 +23,7 @@ interface PaymentServiceContract
     public function charge(array $options);
 
     /**
-     * Get all payments from service provider
+     * Get all payments from service provider.
      *
      * @param array $options
      *
