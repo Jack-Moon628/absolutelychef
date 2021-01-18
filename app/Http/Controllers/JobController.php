@@ -117,7 +117,7 @@ class JobController extends Controller
         }
 
         $job->update(['job_id' => $job->id.$job_id]);
-
+        error_log($request->order);
         $order =  Order::where('id', $request->order)->first();
         $order ->update(['job_posted' => $order->job_posted + 1]);
 

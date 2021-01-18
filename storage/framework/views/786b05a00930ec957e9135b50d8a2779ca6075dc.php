@@ -35,7 +35,7 @@
                                                 <li>
                                                     <a href="#tab_<?php echo e($index); ?>" data-toggle="pill" class="item-option" onclick="CheckOption(this)">
                                                         <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="enterprise" id="m_singleJob_<?php echo e($index); ?>" value="<?php echo e($index); ?>" <?php echo e($index == 0 ? 'checked' : ''); ?>>
+                                                            <input class="form-check-input" type="radio" name="enterprise" id="m_singleJob_<?php echo e($index); ?>" value="<?php echo e($index); ?>" <?php echo e($index == 0 ? 'checked' : ''); ?>>
                                                             <label class="form-check-label" for="m_singleJob_<?php echo e($index); ?>">
                                                                 <?php echo $package->label; ?>
 
@@ -96,7 +96,7 @@
                                                 <li>
                                                     <a href="#tab_b_<?php echo e($index); ?>" data-toggle="pill" class="item-option" onclick="CheckOption(this)">
                                                         <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="managment" id="m_singleJob_<?php echo e($index); ?>" value="<?php echo e($index); ?>" <?php echo e($index == 0 ? 'checked' : ''); ?>>
+                                                            <input class="form-check-input" type="radio" name="managment" id="m_singleJob_<?php echo e($index); ?>" value="<?php echo e($index); ?>" <?php echo e($index == 0 ? 'checked' : ''); ?>>
                                                             <label class="form-check-label" for="m_singleJob_<?php echo e($index); ?>">
                                                                 <?php echo $package->label; ?>
 

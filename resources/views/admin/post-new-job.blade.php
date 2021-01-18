@@ -318,7 +318,7 @@
                         {!! e_form_error('city_name', $errors) !!}
                     </div>
                 </div>
-                <input type="number" style="display:none"  value="{{ $order }}" placeholder="{{ $order }}" name="order">
+                <input type="text" style="display:none"  value="{{ $order->id }}" placeholder="{{ $order }}" name="order">
 
 
                 <div class="form-group row text-center">

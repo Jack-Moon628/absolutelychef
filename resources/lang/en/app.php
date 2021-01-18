@@ -43,7 +43,7 @@ return [
     'employer_new_desc'                 => 'Create an employer account to post your job to find the best  talent',
     'agency_new_desc'                   => 'Create an agency account to post jobs on behalf of companies',
     'register_job_seeker'               => 'Register Job Seeker',
-    'registration_successful'           => 'Register successful',
+    'registration_successful'           => 'Registration successful',
     'employer_register'                 => 'Employer Register',
     'company_register'                  => 'Company Register',
     'company'                           => 'Company',

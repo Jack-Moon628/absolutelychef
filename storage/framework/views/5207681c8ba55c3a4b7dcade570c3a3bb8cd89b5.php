@@ -162,15 +162,15 @@
                             <h4>Price per 30 day job posting</h4>
                             <ul class="list-group">
                                 <?php if($cartItem->attributes->type == 0): ?>
-                                    <li class="list-group-item"><span>1</span><span class="float-right"> <?php echo get_amount(29); ?> each</span></li>
-                                    <li class="list-group-item"><span>2</span><span class="float-right"> <?php echo get_amount(25); ?> each</span></li>
-                                    <li class="list-group-item"><span>3</span><span class="float-right"> <?php echo get_amount(22); ?> each</span></li>
-                                    <li class="list-group-item"><span>5-10</span><span class="float-right"> <?php echo get_amount(19); ?> each</span></li>
+                                    <li class="list-group-item"><span>1</span><span class="float-right"> <?php echo get_amount(10); ?> each</span></li>
+                                    <li class="list-group-item"><span>2</span><span class="float-right"> <?php echo get_amount(8); ?> each</span></li>
+                                    <li class="list-group-item"><span>3</span><span class="float-right"> <?php echo get_amount(6); ?> each</span></li>
+                                    <li class="list-group-item"><span>5-10</span><span class="float-right"> <?php echo get_amount(5); ?> each</span></li>
                                 <?php elseif($cartItem->attributes->type == 1): ?>
-                                <li class="list-group-item"><span>1</span><span class="float-right"> <?php echo get_amount(69); ?> each</span></li>
-                                <li class="list-group-item"><span>2</span><span class="float-right"> <?php echo get_amount(65); ?> each</span></li>
-                                <li class="list-group-item"><span>3</span><span class="float-right"> <?php echo get_amount(62 ); ?> each</span></li>
-                                <li class="list-group-item"><span>5-10</span><span class="float-right"> <?php echo get_amount(59); ?> each</span></li>
+                                <li class="list-group-item"><span>1</span><span class="float-right"> <?php echo get_amount(20); ?> each</span></li>
+                                <li class="list-group-item"><span>2</span><span class="float-right"> <?php echo get_amount(16); ?> each</span></li>
+                                <li class="list-group-item"><span>3</span><span class="float-right"> <?php echo get_amount(14 ); ?> each</span></li>
+                                <li class="list-group-item"><span>5-10</span><span class="float-right"> <?php echo get_amount(10); ?> each</span></li>
                                 <?php endif; ?>
 
                               </ul>

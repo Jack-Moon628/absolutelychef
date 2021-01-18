@@ -37,7 +37,7 @@
                                                 <li>
                                                     <a href="#tab_{{$index}}" data-toggle="pill" class="item-option" onclick="CheckOption(this)">
                                                         <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="enterprise" id="m_singleJob_{{ $index }}" value="{{$index}}" {{ $index == 0 ? 'checked' : '' }}>
+                                                            <input class="form-check-input" type="radio" name="enterprise" id="m_singleJob_{{ $index }}" value="{{$index}}" {{ $index == 0 ? 'checked' : '' }}>
                                                             <label class="form-check-label" for="m_singleJob_{{ $index }}">
                                                                 {!! $package->label !!}
                                                             </label>
@@ -96,7 +96,7 @@
                                                 <li>
                                                     <a href="#tab_b_{{$index}}" data-toggle="pill" class="item-option" onclick="CheckOption(this)">
                                                         <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="managment" id="m_singleJob_{{ $index }}" value="{{$index}}" {{ $index == 0 ? 'checked' : '' }}>
+                                                            <input class="form-check-input" type="radio" name="managment" id="m_singleJob_{{ $index }}" value="{{$index}}" {{ $index == 0 ? 'checked' : '' }}>
                                                             <label class="form-check-label" for="m_singleJob_{{ $index }}">
                                                                 {!! $package->label !!}
                                                             </label>

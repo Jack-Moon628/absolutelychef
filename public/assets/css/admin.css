@@ -1,4 +1,5 @@
-@import url('../line-awesome/css/line-awesome.min.css');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css');
+
 body{
     overflow-x: hidden;
 }
