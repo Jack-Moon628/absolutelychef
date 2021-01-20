@@ -162,6 +162,17 @@
 function CheckOption(item){
     input = item.getElementsByTagName("input")[0];
     input.checked = true;
+    var container = input.closest(".row");
+    console.log(container);
+    var btns = container.getElementsByClassName('btn');
+    var allbtns = document.getElementsByClassName('btn-primary');
+    for (var ele of allbtns){
+        ele.style.backgroundColor = null;
+    }
+    for (var ele of btns){
+        ele.style.backgroundColor = "#000";
+    }
+    console.log(btns);
 };
 
 </script>
